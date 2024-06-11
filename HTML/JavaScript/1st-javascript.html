@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+            #p4, #p5{
+                display: inline-block;
+                padding:20px;
+                cursor:pointer;
+            }
+            .clas{
+                background-color: lightgrey;
+                
+            }
+        </style>
+	</head>
+	<body class="text-center">
+		<p id="one">This is some text</p><br>
+        <button onclick="document.getElementById('one').innerHTML = 'Other text'"> click</button><br>
+        <img id="image" src="images/01.jpg"><br>
+        <button onclick="document.getElementById('image').src = 'images/02.jpg'; document.getElementById('one').innerHTML = 'Other text'"> change image</button><br>
+        <button onclick="document.getElementById('image').src = 'images/03.jpg'; document.getElementById('one').innerHTML = 'Text other';"> change image</button><br>
+        <br>
+        <p id="p1"></p><br>
+        <p id="p2"></p><br>
+        <p id="p3"></p><br>
+        <button onclick="document.getElementById('p4').className = 'clas'">button</button>
+        <button onclick="document.getElementById('p4').className = ''">remove</button><br>
+        <p  id="p4">Something</p><br>
+        <p onclick="addclass()" id="p5">toggle function</p>
+	</body>
+    <script>
+        document.getElementById('p1').innerHTML = 'text added by js';
+        document.getElementById('p2').innerHTML = 5+2;
+        var x = 5;
+        var y = 10;
+        var z = x+y;
+        document.getElementById('p3').innerHTML = z;
+        function addclass(){
+            var x = document.getElementById('p5');
+            if (x.className === 'clas'){
+                x.className = '';
+            } else{
+                x.className = 'clas';
+            }
+        }
+    </script>
+</html>

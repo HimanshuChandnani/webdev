@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+			body{
+				background-color: black;
+				position: relative;
+                overflow: hidden;
+			}
+			#ball{
+				width: 20px;
+				height: 20px;
+				background-color: white;
+				position: absolute;
+                transition: 0.02s;
+                border-radius: 40px;
+			}
+            .bar{
+                width: 20px;
+                height: 200px;
+                background-color: white;
+                position: absolute;
+                transition: 0.1s;
+            }
+            .line{
+                width: 20px;
+                height: 1000px;
+                background-color: white;
+                opacity: 0.2;
+            }
+            .points{
+                color: white;
+                top: 0;
+                margin: 10px 50px;
+            }
+            .stuff{
+                display: flex;
+                place-content: center;
+            }
+            .info{
+                background-color: white;
+                opacity: 0.8;
+                position: absolute;
+                padding: 80px 40px;
+                border-radius: 40px;
+                top: 20%;
+                text-align: center;
+                transition: 0.2s;
+                transform: scale(0);
+            }
+		</style>
+	</head>
+	<body onkeydown="movements(event)">
+		<div id="ball"></div>
+        <div id="left-bar" class="bar"></div>
+        <div id="right-bar" class="bar"></div>
+        <div class="stuff">
+            <div id="pt1" class="points">Player 1: 0</div>
+            <div class="line"></div>
+            <div id="pt2" class="points">Player 2: 0</div>
+            <div id="info" class="info"><p>Press 'space' or this button to continue</p><div onclick="stopper();move();" class="btn btn-secondary mt-2">Continue</div></div>
+        </div>
+	</body>
+    <script>
+        let ball = document.getElementById('ball');
+        let leftbar = document.getElementById('left-bar');
+        let rightbar = document.getElementById('right-bar');
+        let leftpos = 0;
+        let rightpos = 0;
+        let x = 0;
+        let y = 0;
+        ball.style.left = x+'px';
+        ball.style.top = y+'px';
+        let xint;
+        let yint;
+        let delay = 15;
+        let ballSpeed = 4;
+        let bossInterval;
+        let moving = false;
+        let rando;
+        let pt1 = 0;
+        let pt2 = 0;
+        function speeder(){
+            let interval = setInterval(function (){
+                if(delay>8){
+                delay--;
+                console.log(delay);
+                }
+                else{
+                    clearInterval(interval);
+                }
+            },1000)
+        }
+        // speeder();
+        
+        function move(){
+            bossInterval = setInterval(function (){
+                let w = window.innerWidth-20;
+                let h = window.innerHeight-20;
+                leftbar.style.left = '50px';
+                rightbar.style.left = w-50+'px';
+                if(moving==false){
+                    rando = Math.floor((Math.random() * 4) + 1)
+                    x = w/2-4;
+                    y = h/2;
+                    ball.style.left = x+'px';
+                    ball.style.top = y+'px';
+                    moving=true;
+                }
+                if(x<40){
+                    stopper();
+                    pt2++;
+                    document.getElementById('pt2').innerHTML = 'Player 2: '+pt2;
+                    document.getElementById('info').style.transform = 'scale(1)';
+                }
+                if(x<=70&&y>=leftpos&&y<=leftpos+200||rando==1||rando==3){
+                    clearInterval(xint);
+                    xint = setInterval(function (){
+                        if(x<w){
+                            x+=ballSpeed+5;
+                            ball.style.left=x+'px';
+                        }
+                    },delay);
+                }
+                if(x>w-30){
+                    stopper();
+                    pt1++;
+                    document.getElementById('pt1').innerHTML = 'Player 1: '+pt1;
+                    document.getElementById('info').style.transform = 'scale(1)';
+                }
+                if(x>=w-70&&y>=rightpos&&y<=rightpos+200||rando==2||rando==4){
+                    clearInterval(xint);
+                    xint = setInterval(function (){
+                        if(x>0){
+                            x-=ballSpeed+5;
+                            ball.style.left=x+'px';
+                        }
+                    },delay);
+                }
+                if(y<=0||rando==1||rando==4){
+                    clearInterval(yint);
+                    yint = setInterval(function (){
+                        if(y<h){
+                            y+=ballSpeed;
+                            ball.style.top=y+'px';
+                        }
+                    },delay);
+                }
+                if(y>=h||rando==2||rando==3){
+                    clearInterval(yint);
+                    yint = setInterval(function (){
+                        if(y>0){
+                            y-=ballSpeed;
+                            ball.style.top=y+'px';
+                        }
+                    },delay);
+                }
+                rando = 0;
+            },delay*2)
+        }
+        move();
+
+        function movements(event){
+            let key = event.key;
+            let h = window.innerHeight-200;
+            let barspeed = 80;
+            if(key=='w'&&leftpos>=0){
+                leftpos-=barspeed;
+                leftbar.style.top = leftpos+'px';
+            }
+            if(key=='s'&&leftpos<=h){
+                leftpos+=barspeed;
+                leftbar.style.top = leftpos+'px';
+            }
+            if(key=='ArrowUp'&&rightpos>=0){
+                rightpos-=barspeed;
+                rightbar.style.top = rightpos+'px';
+            }
+            if(key=='ArrowDown'&&rightpos<=h){
+                rightpos+=barspeed;
+                rightbar.style.top = rightpos+'px';
+            }
+            if(key==' '){
+                stopper();
+                move();
+                delay = 15;
+                speeder();
+            }
+        }
+
+        function stopper(){
+            clearInterval(xint);
+            clearInterval(yint);
+            clearInterval(bossInterval);
+            moving = false;
+            document.getElementById('info').style.transform = 'scale(0)';
+        }
+
+    </script>
+</html>

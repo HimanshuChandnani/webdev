@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Calcultaion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+            body > div{
+                background-color: aquamarine;
+                border-radius: 20px;
+                padding: 30px 60px !important;
+                input{
+                    padding: 2px 10px 6px 10px;
+                    border-radius: 10px;
+                    border: none;
+                    outline: none;
+                    margin: 0 5px;
+                }
+                table{
+                    border-radius: 20px;
+                    overflow: hidden;
+                    padding: 30px;
+                }
+            }
+            .one p{
+                background-color: white;
+                /* display: table-column-group; */
+                padding: 3px 40px;
+                border-radius: 10px;
+                width: fit-content;
+                margin: auto;
+                margin-top: 12px;
+            }
+		</style>
+	</head>
+	<body class="bg-light">
+		<div class="one my-5 text-center container" id="one">
+            <input id="fn" type="text" placeholder="First name">
+            <input id="ln" type="text" placeholder="Last name">
+            <button class="btn btn-dark" onclick="welcome()">Submit</button>
+        </div>
+        <div class="two my-5 container text-center">
+            <input id="tname" placeholder="Name">
+            <input id="thindi" placeholder="Hindi Marks">
+            <input id="tenglish" placeholder="English Marks">
+            <input id="tmaths" placeholder="Maths Marks">
+            <button class="btn btn-dark" onclick="tcalc()">Submit</button>
+            <table class="table table-dark mt-5">
+                <tbody id="table">
+                    <tr class="before">
+                        <th>Name</th>
+                        <th>Hindi</th>
+                        <th>English</th>
+                        <th>Maths</th>
+                        <th>Total</th>
+                        <th>Get</th>
+                        <th>Percentage</th>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3"></td>
+                        <th>Total</th>
+                        <td id="totaltotal"></td>
+                        <td id="totalget"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <th>Percent</th>
+                        <td id="percentget"></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <table>
+                <tr>
+                    <td colspan="3"></td>
+                    <th>Total</th>
+                    <td id="totaltotal"></td>
+                    <td id="totalget"></td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td>
+                    <th>Percent</th>
+                    <td id="percentget"></td>
+                </tr>
+            </table> -->
+        </div>
+        <div class="container my-5 text-center">
+            <h2>You can use three names: Rohit, Ram and Shyam</h2>
+            <input id="resultinp" type="text">
+            <button onclick="result()" class="btn btn-dark">Submit</button>
+            <table class="table table-dark mt-5">
+                <tr>
+                    <th>Roll. No</th>
+                    <th>Name</th>
+                    <th>English</th>
+                    <th>Hindi</th>
+                    <th>Maths</th>
+                    <th>Total</th>
+                    <th>Get</th>
+                    <th>Percentage</th>
+                </tr>
+                <tr>
+                    <td id="td1"></td>
+                    <td id="td2"></td>
+                    <td id="td3"></td>
+                    <td id="td4"></td>
+                    <td id="td5"></td>
+                    <td id="td6"></td>
+                    <td id="td7"></td>
+                    <td id="td8"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="container my-5 text-center">
+            <input id="thing">
+            <button onclick="buton()" class="btn btn-dark">Enter</button>
+            <p id="funny"></p>
+        </div>
+	</body>
+    <script>
+        function welcome(){
+            var fn = document.getElementById('fn').value;
+            var ln = document.getElementById('ln').value;
+            
+            const para = document.createElement('p');
+            const node = document.createTextNode('Hello!! ' + fn + ' ' + ln + ' Welcome');
+            para.appendChild(node);
+
+            const element = document.getElementById('one');
+            element.appendChild(para);
+        }
+        
+        var totaltotal = 0;
+        var totalget = 0;
+        var percentget= 0;
+        function tcalc(){
+            var tname = document.getElementById('tname').value;
+            var thindi = parseInt(document.getElementById('thindi').value);
+            var tenglish = parseInt(document.getElementById('tenglish').value);
+            var tmaths = parseInt(document.getElementById('tmaths').value);
+            var ttotal = 300;
+            var tget = thindi + tenglish + tmaths;
+            var tpercent = tget * 100 / ttotal;
+
+            const trow = document.createElement('tr');
+            const d1 = document.createElement('td');
+            const node1 = document.createTextNode(tname);
+            d1.appendChild(node1);
+
+            const d2 = document.createElement('td');
+            const node2 = document.createTextNode(thindi);
+            d2.appendChild(node2);
+
+            const d3 = document.createElement('td');
+            const node3 = document.createTextNode(tenglish);
+            d3.appendChild(node3);
+
+            const d4 = document.createElement('td');
+            const node4 = document.createTextNode(tmaths);
+            d4.appendChild(node4);
+
+            const d5 = document.createElement('td');
+            const node5 = document.createTextNode(ttotal);
+            d5.appendChild(node5);
+
+            const d6 = document.createElement('td');
+            const node6 = document.createTextNode(tget);
+            d6.appendChild(node6);
+
+            const d7 = document.createElement('td');
+            const node7 = document.createTextNode(tpercent + '%');
+            d7.appendChild(node7);
+
+            trow.appendChild(d1);
+            trow.appendChild(d2);
+            trow.appendChild(d3);
+            trow.appendChild(d4);
+            trow.appendChild(d5);
+            trow.appendChild(d6);
+            trow.appendChild(d7);
+
+            const table = document.getElementById('table');
+            table.insertBefore(trow,table.children[1]);
+
+            document.getElementById('tname').value= '';
+            document.getElementById('thindi').value= '';
+            document.getElementById('tenglish').value= '';
+            document.getElementById('tmaths').value= '';
+
+            totaltotal = ttotal + totaltotal;
+
+            totalget = tget + totalget;
+
+            percentget = totalget * 100 / totaltotal;
+
+            document.getElementById('totaltotal').innerHTML= totaltotal;
+            document.getElementById('totalget').innerHTML= totalget;
+            document.getElementById('percentget').innerHTML= percentget + '%';
+        }
+
+        function result(){
+            var res = document.getElementById('resultinp').value;
+            if(res == 'Rohit'){
+                document.getElementById('td1').innerHTML = '2342';
+                document.getElementById('td2').innerHTML = 'Rohit';
+                document.getElementById('td3').innerHTML = '40';
+                document.getElementById('td4').innerHTML = '30';
+                document.getElementById('td5').innerHTML = '50';
+                document.getElementById('td6').innerHTML = '300';
+                document.getElementById('td7').innerHTML = '120';
+                document.getElementById('td8').innerHTML = '40%';
+            }
+            else if(res == 'Ram'){
+                document.getElementById('td1').innerHTML = '5465';
+                document.getElementById('td2').innerHTML = 'Ram';
+                document.getElementById('td3').innerHTML = '50';
+                document.getElementById('td4').innerHTML = '20';
+                document.getElementById('td5').innerHTML = '80';
+                document.getElementById('td6').innerHTML = '300';
+                document.getElementById('td7').innerHTML = '150';
+                document.getElementById('td8').innerHTML = '50%';
+            }
+            else if(res == 'Shyam'){
+                document.getElementById('td1').innerHTML = '3589';
+                document.getElementById('td2').innerHTML = 'Shyam';
+                document.getElementById('td3').innerHTML = '90';
+                document.getElementById('td4').innerHTML = '70';
+                document.getElementById('td5').innerHTML = '60';
+                document.getElementById('td6').innerHTML = '300';
+                document.getElementById('td7').innerHTML = '260';
+                document.getElementById('td8').innerHTML = '86.6%';
+            }
+            else{
+                window.alert('Invalid Name')
+            }
+        }
+        var a;
+        var b;
+        function buton(){
+            var thing = document.getElementById('thing').value;
+            console.log(thing);
+            console.log(eval(thing));
+        }
+        function fun(a, b){
+            document.getElementById('funny').innerHTML = a + ' ' + b;
+        }
+    </script>
+</html>

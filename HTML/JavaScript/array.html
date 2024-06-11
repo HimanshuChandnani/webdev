@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Calcultaion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+            .table{
+                width: 80%;
+                margin: auto;
+            }
+            input{
+                border: none;
+                outline: none;
+            }
+		</style>
+	</head>
+	<body>
+        <div>
+            <div class="text-center">
+                <button onclick="refresh()" class="btn btn-dark my-4">Refresh</button>
+            </div>
+            <!-- <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>English</th>
+                    <th>Hindi</th>
+                    <th>Maths</th>
+                    <th>Science</th>
+                    <th>Total</th>
+                    <th>Percentage</th>
+                    <th>Grade</th>
+                </tr>
+                <tr>
+                    <td><input id="name1" type="text" value="Ajay"></td>
+                    <td><input id="english1" type="number" value="50"></td>
+                    <td><input id="hindi1" type="number" value="40"></td>
+                    <td><input id="maths1" type="number" value="70"></td>
+                    <td><input id="science1" type="number" value="60"></td>
+                    <td id="total1"></td>
+                    <td id="percent1"></td>
+                    <td id="grade1"></td>
+                </tr>
+            </table> -->
+        </div>
+	</body>
+    <script>
+        document.write('<table class="table"><tr><th>Name</th><th>English</th><th>Hindi</th><th>Maths</th><th>Science</th><th>Total</th><th>Percentage</th><th>Grade</th></tr><tr><td><input id="name1" type="text" value="Ajay"></td><td><input id="english1" type="number" value="20"></td><td><input id="hindi1" type="number" value="30"></td><td><input id="maths1" type="number" value="40"></td><td><input id="science1" type="number" value="45"></td><td id="total1"></td><td id="percent1"></td><td id="grade1"></td></tr>   <tr><td><input id="name2" type="text" value="Chitransh"></td><td><input id="english2" type="number" value="60"></td><td><input id="hindi2" type="number" value="30"></td><td><input id="maths2" type="number" value="40"></td><td><input id="science2" type="number" value="70"></td><td id="total2"></td><td id="percent2"></td><td id="grade2"></td></tr></table>')
+        function refresh(){
+            var narray = [];
+            var earray = [];
+            var harray = [];
+            var marray = [];
+            var sarray = [];
+            var tarray = [];
+            var parray = [];
+            var garray = [];
+
+            //0-33=F
+            //33-50=D
+            //50-70=C
+            //70-90=B
+            //90-100=A
+            //line1
+            narray[0] = parseInt(document.getElementById('name1').value);
+            earray[0] = parseInt(document.getElementById('english1').value);
+            harray[0] = parseInt(document.getElementById('hindi1').value);
+            marray[0] = parseInt(document.getElementById('maths1').value);
+            sarray[0] = parseInt(document.getElementById('science1').value);
+
+            tarray[0] = earray[0] + harray[0] + marray[0] + sarray[0];
+            parray[0] = tarray[0] * 100 / 400;
+
+            if(parray[0] < 33){
+                garray[0] = 'F';
+            }
+            else if(parray[0] >= 33 && parray[0] < 50){
+                garray[0] = 'D';
+            }
+            else if(parray[0] >= 50 && parray[0] < 70){
+                garray[0] = 'C';
+            }
+            else if(parray[0] >= 70 && parray[0] < 90){
+                garray[0] = 'B';
+            }
+            else if(parray[0] >= 90 && parray[0] <= 100){
+                garray[0] = 'A';
+            }
+
+            document.getElementById('total1').innerHTML = tarray[0];
+            document.getElementById('percent1').innerHTML = parray[0] + '%';
+            document.getElementById('grade1').innerHTML = garray[0];
+
+            //line2
+            narray[1] = parseInt(document.getElementById('name2').value);
+            earray[1] = parseInt(document.getElementById('english2').value);
+            harray[1] = parseInt(document.getElementById('hindi2').value);
+            marray[1] = parseInt(document.getElementById('maths2').value);
+            sarray[1] = parseInt(document.getElementById('science2').value);
+
+            tarray[1] = earray[1] + harray[1] + marray[1] + sarray[1];
+            parray[1] = tarray[1] * 100 / 400;
+
+            if(parray[1] < 33){
+                garray[1] = 'F';
+            }
+            else if(parray[1] >= 33 && parray[1] < 50){
+                garray[1] = 'D';
+            }
+            else if(parray[1] >= 50 && parray[1] < 70){
+                garray[1] = 'C';
+            }
+            else if(parray[1] >= 70 && parray[1] < 90){
+                garray[1] = 'B';
+            }
+            else if(parray[1] >= 90 && parray[1] <= 100){
+                garray[1] = 'A';
+            }
+
+            document.getElementById('total2').innerHTML = tarray[1];
+            document.getElementById('percent2').innerHTML = parray[1] + '%';
+            document.getElementById('grade2').innerHTML = garray[1];
+        }
+        // const timer = ms => new Promise(res => setTimeout(res, ms))
+        // for(i=0;i<=100;i++){
+        //     document.write(i);
+        //     await timer(3000);
+        // }
+
+        const timer = ms => new Promise(res => setTimeout(res, ms))
+
+        async function load () { // We need to wrap the loop into an async function for this to work
+            for (var i = 0; i < 1000; i++) {
+                refresh();
+                await timer(100); // then the created Promise can be awaited
+            }
+        }
+
+        load();
+        
+        // var a = 0
+        // var b = 0;
+        // while(a<10){
+        //     b = delay(b);
+        //     if(x==b){
+        //         a++;
+        //     }
+        //     else{
+        //         a+=0.5;
+        //     }
+            
+        // }
+        // function delay(b){
+        //     setTimeout(function() {
+        //         console.log(b);
+        //         b++;
+        //         return b;
+        //     }, 1000);
+        // }
+    </script>
+</html>

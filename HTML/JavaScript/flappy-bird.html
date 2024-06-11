@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+            body{
+                background-color: beige;
+            }
+            .game{
+                width: 600px;
+                height: 800px;
+                margin: auto;
+                background-color: lightsteelblue;
+                position: relative;
+                text-align: -webkit-center;
+                overflow: hidden;
+            }
+            .start{
+                width: 600px;
+                height: 800px;
+                background-color: rgba(255, 255, 255, 0.363);
+                position: absolute;
+                top: 0;
+                z-index: 10;
+                align-content: center;
+                transition: 0.2s;
+            }
+            .bird{
+                height: 30px;
+                width: 30px;
+                background-image: url(images/bird.png);
+                background-size: contain;
+                position: relative;
+                transition: 0.2s;
+                z-index: 2;
+            }
+            .ground{
+                width: 100%;
+                height: 50px;
+                background-color:lightslategray;
+                position: absolute;
+                bottom: 0;
+                z-index: 1;
+            }
+            #pipes>div{
+                width: 50px;
+                height: 800px;
+                background-color:lime;
+                position: absolute;
+                top: 0;
+                /* transition: 0.05s; */
+                left: 600px;
+                /* z-index: 1; */
+            }
+            #pipes div div::before{
+                content: '';
+                width: 120%;
+                height: 40px;
+                background-color: lime;
+                top: -40px;
+                position: absolute;
+                left: -10%;
+            }
+            #pipes div div::after{
+                content: '';
+                width: 120%;
+                height: 40px;
+                background-color: lime;
+                bottom: -40px;
+                position: absolute;
+                left: -10%;
+            }
+            .space{
+                width: 100%;
+                height: 200px;
+                background-color: lightsteelblue;
+                position: absolute;
+            }
+            #point{
+                position: relative;
+                z-index: 3;
+            }
+            #cloud div{
+                background-color:azure;
+                position: absolute;
+                transition: 10s;
+                mix-blend-mode: overlay;
+            }
+        </style>
+    </head>
+    <body onkeydown="movement(event)">
+        <header></header>
+        <section class="container">
+            <div class="game">
+                <p id="point">Points: 0</p>
+                <div id="bird" class="bird"></div>
+                <div class="ground"></div>
+                <div id="pipes"></div>
+                <div id="cloud"><div></div></div>
+                <div id="start" class="start">
+                    <h2>Click to Start</h2>
+                    <div class="btn btn-dark" onclick="starter()">|></div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script>
+        let bird = document.getElementById('bird');
+        let pos = 400;
+        bird.style.top = pos+'px';
+        let interval;
+        let intervalpip1;
+        let intervalpip2;
+        let inter;
+        let speed=4;
+        let pipespeed=5;
+        let delay = 100;
+        let flapAllow = false;
+        let gravAllow = false;
+        let pipeAllow = false;
+
+        function starter(){
+            gravity()
+            pipe();
+            document.getElementById('start').style.transform='scale(0)';
+            pos = 400;
+            document.getElementById('start').children[0].innerHTML='Click to Restart';
+            let element = document.getElementById('pipes');
+            while (element.firstChild) { 
+                element.firstChild.remove();
+            }
+            document.getElementById('point').innerHTML=0;
+            flapAllow = true;
+            bird.style.top = pos+'px';
+            bird.style.transform = 'rotate(0deg)';
+        }
+
+        function movement(event){
+            let key = event.key;
+            if(key==' '){
+                flap();
+            }
+        }
+
+        function flap(){
+            if(flapAllow == true){
+                bird.style.top = pos-160+'px';
+                pos -= 160;
+                clearInterval(inter);
+                acceleration();
+                gravAllow = true;
+                pipeAllow = true;
+                bird.style.transform = 'rotate(-75deg)';
+            }
+        }
+
+        function acceleration(){
+            speed = 8;
+            inter = setInterval(function (){
+                speed+=8;
+                if(bird.style.transform == 'rotate(-75deg)'){
+                    bird.style.transform = 'rotate(-45deg)';
+                }
+                else if(bird.style.transform == 'rotate(-45deg)'){
+                    bird.style.transform = 'rotate(15deg)';
+                }
+                else if(bird.style.transform == 'rotate(15deg)'){
+                    bird.style.transform = 'rotate(40deg)';
+                }
+                else if(bird.style.transform == 'rotate(40deg)'){
+                    bird.style.transform = 'rotate(60deg)';
+                }
+            },delay)
+        }
+        acceleration();
+
+        function gravity(){
+            interval = setInterval(function (){
+                if(gravAllow==true){
+                    bird.style.top = pos+speed+'px';
+                    pos += speed;
+                }
+            },delay)
+        }
+
+        function stopper(){
+            clearInterval(interval);
+            clearInterval(intervalpip1);
+            clearInterval(intervalpip2);
+            clearInterval(inter);
+            document.getElementById('start').style.transform='scale(1)';
+            flapAllow = false;
+            gravAllow = false;
+            pipeAllow = false;
+        }
+
+        function gameOver(){
+            setInterval(function (){
+                if(pos>=750-30){
+                    stopper()
+                }
+            },delay)
+        }
+        gameOver();
+
+        function pipe(){
+            let pipes = document.getElementById('pipes');
+            let x = 600;
+            let old = 0;
+            let point = 0
+            intervalpip1 = setInterval(function (){
+                if (pipeAllow==true){
+                    let rando = Math.floor((Math.random() * 550) + 1);
+                    let space = document.createElement('div');
+                    space.style.top = rando+'px';
+                    space.classList.add('space');
+                    let pipe = document.createElement('div');
+                    pipe.appendChild(space);
+                    pipe.style.left = x + 'px';
+                    pipes.appendChild(pipe);
+                }
+            },1500);
+            intervalpip2 = setInterval(function (){
+                if (pipeAllow==true){
+                    let len = pipes.children.length;
+                    for(i=old;i<len;i++){
+                        let pip = String(pipes.children[i].style.left); 
+                        pipes.children[i].style.left = parseInt(pip)-pipespeed + 'px';
+                        if(parseInt(pip)<-70){
+                            old++;
+                        }
+                        if(parseInt(pip)>=285&&parseInt(pip)<315){
+                            console.log(parseInt(pipes.children[i].children[0].style.top))
+                            if(parseInt(pipes.children[i].children[0].style.top)-50<pos&&parseInt(pipes.children[i].children[0].style.top)+150>pos){
+                                point++;
+                                document.getElementById('point').innerHTML='Points: '+Math.trunc(point/6);
+                            }
+                            else{
+                                stopper();
+                            }
+                        }
+                    }
+                }
+            },delay/4)
+        }
+
+        function clouds(){
+            let clouds = document.getElementById('cloud');
+            let x = 600;
+            let old = 0;
+            setInterval(function (){
+                let top = Math.floor((Math.random() * 100) + 1);
+                let height = Math.floor((Math.random() * 20) + 1)*5;
+                let width = Math.floor((Math.random() * 10) + 1)*30;
+                let opacity = Math.floor((Math.random() * 10) + 1)/50;
+                let radius = Math.floor((Math.random() * 10) + 1)*4;
+                let cloud = document.createElement('div');
+                cloud.style.top = top+'px';
+                cloud.style.height = height+'px';
+                cloud.style.width = width+'px';
+                cloud.style.opacity = opacity;
+                cloud.style.borderRadius = radius+'px';
+                cloud.style.left = x + 'px';
+                clouds.appendChild(cloud);
+            },delay*20);
+            setInterval(function (){
+                let sped = Math.floor((Math.random() * 200) + 1);
+                let len = clouds.children.length;
+                for(i=old;i<len;i++){
+                    let pip = String(clouds.children[i].style.left); 
+                    clouds.children[i].style.left = parseInt(pip)-sped + 'px';
+                    if(parseInt(pip)<-300){
+                        old++;
+                    }
+                }
+            },3000)
+        }
+        clouds();
+    </script>
+</html>

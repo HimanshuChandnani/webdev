@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+	</body>
+    <script>
+        //sorting
+        let fruits = ['orange','apple','banana','cherry'];
+        fruits.sort();
+        document.write(fruits);
+        document.write('<br>');
+        //unique numbers
+        let numbers = [4,4,2,3,4,3,1,2,0,3,2];
+        let unique = [...new Set(numbers)];
+        document.write(unique);
+        document.write('<br>');
+        //compare
+        let newNumbers = [4,4,2,3,4,3,1,2,0,3,2];
+        let comp = JSON.stringify(numbers) === JSON.stringify(newNumbers);
+        document.write(comp);
+        document.write('<br>');
+        //reverse
+        fruits.reverse();
+        document.write(fruits);
+        document.write('<br>');
+        //merge
+        let merge = numbers.concat(fruits,newNumbers);
+        document.write(merge);
+        document.write('<br>');
+        //search
+        let ind = merge.indexOf('apple');
+        document.write(ind);
+        document.write(ind>0);
+        document.write('<br>');
+        //push
+        fruits.push('pineapple');
+        document.write(fruits);
+        document.write('<br>');
+        //pop
+        fruits.pop();
+        document.write(fruits);
+        document.write('<br>');
+        //unshift
+        fruits.unshift('pineapple');
+        document.write(fruits);
+        document.write('<br>');
+        //shift
+        fruits.shift();
+        document.write(fruits);
+        document.write('<br>');
+        //delete
+        delete fruits[1];
+        document.write(fruits);
+        document.write('<br>');
+        //slice
+        let slc = merge.slice(4,16);
+        document.write(slc);
+        document.write('<br>');
+        //splice
+        fruits.splice(1,1,'cherry','mango');
+        document.write(fruits);
+        document.write('<br>');
+        //min max
+        document.write('Min: '+Math.min(...numbers)+' Max: '+Math.max(...numbers));
+        document.write('<br>');
+        //max without predefined function
+        let arr = [3,5,2,7,2,9];
+        let max = 0;
+        for(i=0;i<arr.length;i++){
+            if (max<arr[i]){
+                max=arr[i];
+            }
+        }
+        document.write(max);
+    </script>
+</html>

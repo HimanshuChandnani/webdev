@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Factorial</h2>
+                    <input id="fact" type="number">
+                    <button onclick="factorial()">Enter</button>
+                    <p id="factres">Result:</p>
+                </div>
+                <div class="col-lg-6">
+                    <h2>Armstrong Number</h2>
+                    <input id="arm" type="number">
+                    <button onclick="armstrong()">Enter</button>
+                    <p id="armres">Result:</p>
+                </div>
+                <div class="col-lg-6">
+                    <h2>Fizz Buzz</h2>
+                    <input id="fizz" type="number">
+                    <button onclick="fizzbuzz()">Enter</button>
+                    <p id="fizzres">Result:</p>
+                </div>
+                <div class="col-lg-6">
+                    <h2>Counting of Notes</h2>
+                    <input id="count" type="number">
+                    <button onclick="counting()">Enter</button>
+                    <p id="countres">Result:</p>
+                </div>
+            </div>
+        </div>
+	</body>
+    <script>
+        function factorial(){
+            let x = document.getElementById('fact').value;
+            let y = 1;
+            for(i=1;i<=x;i++){
+                y*=i;
+            }
+            document.getElementById('factres').innerHTML = y;
+        }
+
+        function armstrong(){
+            let x = String(document.getElementById('arm').value);
+            let y = x.length;
+            let z = 0;
+            console.log(x.length)
+            for(i=0;i<y;i++){
+                z += parseInt(x[i])**y;
+            }
+            if(parseInt(x)==z){
+                document.getElementById('armres').innerHTML = x + ' It is an armstrong number';
+            }
+            else{
+                document.getElementById('armres').innerHTML = x + ' It is not an armstrong number';
+            }
+        }
+
+        function fizzbuzz(){
+            let x = document.getElementById('fizz').value;
+            let y;
+            if(x%3==0&&x%5==0){
+                y='Fizz Buzz'
+            }
+            else if(x%3==0){
+                y='Fizz'
+            }
+            else if(x%5==0){
+                y='Buzz'
+            }
+            else{
+                y=x;
+            }
+            document.getElementById('fizzres').innerHTML = y;
+        }
+        function counting(){
+            let x = document.getElementById('count').value;
+            let y = document.getElementById('countres');
+            if(x/2000>=1){
+                y.innerHTML = '2000 *' + parseInt(x/2000) + '<br>';
+                x = x%2000;
+            }
+            if(x/500>=1){
+                y.innerHTML = y.innerHTML + '500 *' + parseInt(x/500) + '<br>';
+                x = x%500;
+            }
+            if(x/200>=1){
+                y.innerHTML = y.innerHTML + '200 *' + parseInt(x/200) + '<br>';
+                x = x%200;
+            }
+            if(x/100>=1){
+                y.innerHTML = y.innerHTML + '100 *' + parseInt(x/100) + '<br>';
+                x = x%100;
+            }
+            if(x/50>=1){
+                y.innerHTML = y.innerHTML + '50 *' + parseInt(x/50) + '<br>';
+                x = x%50;
+            }
+            if(x/20>=1){
+                y.innerHTML = y.innerHTML + '20 *' + parseInt(x/20) + '<br>';
+                x = x%20;
+            }
+            if(x/10>=1){
+                y.innerHTML = y.innerHTML + '10 *' + parseInt(x/10) + '<br>';
+                x = x%10;
+            }
+            if(x/5>=1){
+                y.innerHTML = y.innerHTML + '5 *' + parseInt(x/5) + '<br>';
+                x = x%5;
+            }
+            if(x/2>=1){
+                y.innerHTML = y.innerHTML + '2 *' + parseInt(x/2) + '<br>';
+                x = x%2;
+            }
+            if(x/1>=1){
+                y.innerHTML = y.innerHTML + '1 *' + parseInt(x/1) + '<br>';
+                x = x%1;
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+			.card{
+                border: 1px solid grey;
+                width: 1000px;
+                margin: auto;
+                padding: 30px 50px;
+                margin-top: 20px;
+            }
+            #author{
+                float: right;
+            }
+            .bottom{
+                border-top: 1px solid;
+                padding-top: 10px;
+            }
+            .top{
+                padding-bottom: 10px;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="card">
+            <div class="top">
+                <p id="quote"></p>
+            </div>
+            <div class="bottom">
+                <button onclick="api()" class="btn btn-dark">Generate</button>
+                <p id="author"></p>
+            </div>
+        </div>
+	</body>
+    <script>
+
+        function api(){
+            fetch('https://api.quotable.io/random')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('quote').innerHTML= data.content;
+                    document.getElementById('author').innerHTML = '~ '+data.author;
+                })
+                .catch(error => console.log(error));
+        }
+    </script>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.4.6.2.css">
+    <title>title</title>
+    <style>
+        
+        .banner1{
+            background-image: url("images/about.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .banner2{
+            background-image: url("images/pic5.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .banner3{
+            background-image: url("images/house01.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .banner1,.banner2,.banner3{
+            background-attachment: fixed;
+        }
+        .front{
+            background-color: #ffffffba;
+            border-radius: 15px;
+        }
+        .front2{
+            background-color: #fae1a9e0;
+            border-radius: 15px;
+            height: 270px;
+            h2{
+                text-align: center;
+                background-color: #edc879e0;
+            }
+        }
+        .button a{
+            width:100%;
+            align-content: center;
+            font-size: 3vw;
+        }
+        @media only screen and (max-width: 1024px){
+            .button a{
+                font-size: 4vw;
+            }
+        }
+        @media only screen and (max-width: 426px){
+            .button a{
+                font-size: 5vw;
+            }
+        }
+        /*
+        @media only screen and (max-width: 321px){
+            .button a{
+                font-size: 15px;
+                height:50px
+            }
+        } */
+        footer input, textarea{
+            width:100%;
+            border-radius: 5px;
+        }
+        dt{
+            margin-top: 20px;
+            font-size: 22px;
+        }
+        .smth{
+            display: flex;
+        }
+        .nav a{
+            text-underline-offset: 13px;
+            text-decoration-thickness: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark">
+        <div class="container pb-2">
+            <div class="row align-items-end py-3">
+                <nav class="col-sm-10 col-9 px-0 nav">
+                    <a href="" class=" text-white mx-2">Home</a>
+                    <a href="" class=" text-white mx-2">Gallery</a>
+                    <a href="" class=" text-white mx-2">Menu</a>
+                    <a href="" class=" text-white mx-2">Reviews</a>
+                    <a href="" class=" text-white mx-2">About us</a>
+                </nav>
+                <section class="col-sm-2 col-3 text-right  px-0">
+                    <img src="images/logo1.png">
+                </section>
+            </div>
+        </div>
+    </header>
+    <div class="banner1 mb-5">
+        <div class="container py-5">
+            <div class="row py-3 front">
+                <div class="col-lg-6">
+                    <img width="100%"  src="images/03.jpg">
+                </div>
+                <div class="col-lg-6">
+                    <h1>This Kitchen</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a href="" class="btn btn-outline-dark float-right">Read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gallery my-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6">
+                    <img width="100%" src="images/01.jpg">
+                    <h3 class="mt-3">Food</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <img width="100%" src="images/02.jpg">
+                    <h3 class="mt-3">Food</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <img width="100%" src="images/04.jpg">
+                    <h3 class="mt-3">Food</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <img width="100%" src="images/05.jpg">
+                    <h3 class="mt-3">Food</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner2">
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                    <div class="front2 px-0 py-3 my-3">
+                        <h2>Dessert</h2>
+                        <div class="row px-4">
+                            <div class="col-9">
+                                <p>Caramel Brownie</p>
+                                <p>Cheesecake</p>
+                                <p>Chocolate Classic</p>
+                                <p>Maple Apple Pie</p>
+                                <p>Brownie Pops</p>
+                            </div>
+                            <div class="col-3 text-right">
+                                <p>$10</p>
+                                <p>$11</p>
+                                <p>$8</p>
+                                <p>$10</p>
+                                <p>$8</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                    <div class="front2 px-0 py-3 my-3">
+                        <h2>Special Offers</h2>
+                        <div class="row px-4">
+                            <div class="col-9">
+                                <p>Chicken Goujons</p>
+                                <p>Indian Spiced Curry</p>
+                                <p>Roast Of The Day</p>
+                                <p>7oz Chilly Burger</p>
+                            </div>
+                            <div class="col-3 text-right">
+                                <p>$6</p>
+                                <p>$7</p>
+                                <p>$9</p>
+                                <p>$5</p>
+                            </div>
+                        </div>
+                    </div>+
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                    <div class="front2 px-0 py-3 my-3">
+                        <h2>Drinks</h2>
+                        <div class="row px-4">
+                            <div class="col-9">
+                                <p>Island Punch</p>
+                                <p>Fruit Deluxe</p>
+                                <p>Goombay Smash-</p>
+                                <p>Passion Fruit</p>
+                                <p>Mild Punch</p>
+                            </div>
+                            <div class="col-3 text-right">
+                                <p>$3</p>
+                                <p>$4</p>
+                                <p>$5</p>
+                                <p>$6</p>
+                                <p>$7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button">
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-6 text-center">
+                    <a class="btn btn-outline-success">Indian Menu</a>
+                </div>
+                <div class="col-6 text-center">
+                    <a class="btn btn-outline-success">Western Menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about banner3 py-1">
+        <div class="container front">
+            <div class="row my-5">
+                <div class="col-lg-8 m-auto text-center">
+                    <h1>About us</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-secondary text-white">
+        <div class="container">
+            <div class="row py-4">
+                <div class="col-lg-5 my-3">
+                    <div class="width row nav">
+                        <dl>
+                            <dt><a href="" class="col-2 text-white mx-auto">Home</a></dt>
+                            <dt><a href="" class="col-2 text-white mx-auto">Gallery</a></dt>
+                            <dt><a href="" class="col-2 text-white mx-auto">Menu</a></dt>
+                            <dt><a href="" class="col-2 text-white mx-auto">Reviews</a></dt>
+                            <dt><a href="" class="col-3 text-white mx-auto">About us</a></dt>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-lg-1 smth">
+                </div>
+                <div class="col-lg-6 my-3">
+                    <form>
+                        <h3>Contact us</h3>
+                        <label>Name</label><br>
+                        <input class="pl-2" type="text" placeholder="Name"><br>
+                        <label>Email</label><br>
+                        <input class="pl-2" type="email" placeholder="Email"><br>
+                        <label>Message</label><br>
+                        <textarea class="pl-2" placeholder="Message"></textarea><br>
+                        <a href="" class="btn btn-outline-light float-right">Submit</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

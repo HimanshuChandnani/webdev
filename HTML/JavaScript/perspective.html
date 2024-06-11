@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+			img{
+				position: fixed;
+			}
+			#img{
+				width: 10000px;
+				height: 5000px;
+				z-index: 2;
+			}
+			#img2{
+				width: 8000px;
+				height: 4000px;
+			}
+			#imglogo{
+				width: 200px;
+				height: 200px;
+				z-index: 1;
+			}
+			#img3{
+				width: 6000px;
+				height: 3000px;
+			}
+			#img4{
+				width: 2000px;
+				height: 1000px;
+			}
+			body{
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body onmousemove="mouse(event)">
+		<div id="div">
+			<img id="img" src="images/big dot.png">
+			<img id="img2" src="images/big dot.png">
+			<img id="imglogo" src="images/logo1.png">
+			<img id="img3" src="images/big dot.png">
+			<img id="img4" src="images/big dot.png">
+		</div>
+	</body>
+	<script>
+		let img = document.getElementById('img');
+		let img2 = document.getElementById('img2');
+		let img3 = document.getElementById('img3');
+		let img4 = document.getElementById('img4');
+		let imglogo = document.getElementById('imglogo');
+		let body = document.getElementById('div');
+		let h = innerHeight;
+		let w = innerWidth;
+		body.style.width = w+'px';
+		body.style.height = h+'px';
+		body.style.backgroundColor = 'black';
+
+		img.style.left = w/2-5000+'px';
+		img.style.top = h/2-2500+'px';
+		
+		img2.style.left = w/2-4000+'px';
+		img2.style.top = h/2-2000+'px';
+
+		imglogo.style.left = w/2-100+'px';
+		imglogo.style.top = h/2-100+'px'
+		
+		img3.style.left = w/2-3000+'px';
+		img3.style.top = h/2-1500+'px';
+		
+		img4.style.left = w/2-1000+'px';
+		img4.style.top = h/2-500+'px';
+
+		function mouse(event){
+			let x = event.clientX-w/2;
+			let y = event.clientY-h/2;
+
+			img.style.transform = 'rotateY('+x/25*-1+'deg) rotateX('+y/14+'deg)';
+			img2.style.transform = 'rotateY('+x/35*-1+'deg) rotateX('+y/24+'deg)';
+			imglogo.style.transform = 'rotateY('+x/35*-1+'deg) rotateX('+y/24+'deg)';
+			img3.style.transform = 'rotateY('+x/45*-1+'deg) rotateX('+y/34+'deg)';
+			img4.style.transform = 'rotateY('+x/65*-1+'deg) rotateX('+y/54+'deg)';
+			console.log(x +', '+ y)
+		}
+	</script>
+</html>

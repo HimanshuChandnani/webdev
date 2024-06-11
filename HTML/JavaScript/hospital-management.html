@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+			.col-lg-3{
+                padding: 10px;
+            }
+            .card{
+                border: 1px solid black;
+                padding: 20px;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="container">
+            <div>
+                <input id="add" type="text" placeholder="Patient name">
+                <button onclick="addPerson()">Add patient</button>
+                <input id="remove" type="text" placeholder="Patient name">
+                <button onclick="removePerson()">Remove patient</button>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card"></div>
+                </div>
+            </div>
+        </div>
+	</body>
+    <script>
+        let card = document.getElementsByClassName('card');
+        for(i=0;i<card.length;i++){
+            card[i].innerHTML = 'Room no. '+(i+1)+'<br><p class="patient"></p>';
+        }
+        let patient = document.getElementsByClassName('patient');
+        let available = true;
+        function addPerson(){
+            let name = document.getElementById('add').value;
+            for(i=0;i<patient.length;i++){
+                if(patient[i].innerHTML==''){
+                    patient[i].innerHTML=name;
+                    available = true;
+                    break;
+                }
+                else{
+                    available = false
+                }
+            }
+            if(available == false){
+                alert('no rooms available')
+            }
+        }
+        function removePerson(){
+            let name = document.getElementById('remove').value;
+            for(i=0;i<patient.length;i++){
+                if(patient[i].innerHTML==name){
+                    patient[i].innerHTML='';
+                    break;
+                }
+            }
+        }
+    </script>
+</html>

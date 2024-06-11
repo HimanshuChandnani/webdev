@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .cls{
+                font-size: 346px;
+                font-family: "Display Patrol";
+                color: rgb(0, 0, 0);
+                line-height: 1.2;
+                text-align: center;
+                text-shadow: 0px 42px 21px rgba(0, 0, 0, 0.75);
+                -moz-transform: scale(0.9, 1.35);
+                -webkit-transform: scale(0.9, 1.35);
+                -ms-transform: scale(0.9, 1.35);
+                position: absolute;
+                left: 178.375px;
+                top: 571px;
+                z-index: 3;
+            }
+
+        </style>
+    </head>
+    <body>
+        <p class="cls">Hello</p>
+    </body>
+    <script>
+        document.write('Star Chess<br>');
+        for(i=0;i<32;i++){
+                if(i/4>=1&&i/4<2||i/4>=3&&i/4<4||i/4>=5&&i/4<6||i/4>=7&&i/4<8){
+                    document.write('&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ')
+                }
+            for(j=0;j<8;j++){
+                if(j%2==0){
+                    document.write('* &nbsp; * &nbsp; * &nbsp; * &nbsp; ');
+                }
+                else{
+                    document.write('&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ')
+                }
+            }
+            document.write('<br>');
+        }
+        document.write('Table Chess');
+        document.write('<table style="width:100%;">');
+        for(i=0;i<8;i++){
+            document.write('<tr>');
+            for(j=0;j<8;j++){
+                if(i%2==0&&j%2==0||i%2==1&&j%2==1){
+                    document.write('<td style="height:150px; background-color:black;"></td>');
+                }
+                else{
+                    document.write('<td style="height:150px;"></td>');
+                }
+            }
+            document.write('</tr>');
+        }
+        document.write('</table>');
+
+
+        document.write('Table Chess with .style');
+        document.write('<table id="tab" style="width:100%;">');
+        for(i=0;i<8;i++){
+            document.write('<tr>');
+            for(j=0;j<8;j++){
+                document.write('<td style="height:150px;"></td>');
+                if(i%2==0&&j%2==0||i%2==1&&j%2==1){
+                    document.getElementById('tab').children[0].children[i].children[j].style.backgroundColor = 'black';
+                }
+            }
+            document.write('</tr>');
+        }
+    </script>
+</html>

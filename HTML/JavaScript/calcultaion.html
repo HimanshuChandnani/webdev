@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Calcultaion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+            
+			.box{
+                background-color: lightgrey;
+                padding: 50px;
+                margin: auto;
+                position: absolute;
+                transition-duration: 0.2s;
+                transform: scale(0);
+                width: 30%;
+                left: 0;
+                right: 0;
+                border-radius: 10px;
+                input{
+                    width: 100%;
+                    padding: 10px;
+                    border-radius: 10px;
+                    border: unset;
+                    margin: 10px 0;
+                }
+                button{
+                    padding: 10px;
+                    border-radius: 10px;
+                    border: unset;
+                    margin: 10px 0;
+                    float: right;
+                    width: 44px;
+                }
+                .pclass{
+                    background-color: white;
+                    display: inline-block;
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin: 10px 0;
+                }
+            }
+            .active{
+                transform: scale(1);
+            }
+		</style>
+	</head>
+	<body>
+		<div class="container">
+            <div class="text-center my-3"><button id="opt1" onclick="show1()" class="btn btn-dark">Addition</button>
+            <button id="opt2" onclick="show2()" class="btn btn-dark">Subtraction</button>
+            <button id="opt3" onclick="show3()" class="btn btn-dark">Multiplication</button>
+            <button id="opt4" onclick="show4()" class="btn btn-dark">Division</button></div>
+            <div class="row">
+                <div id="div1" class="col-lg-6 box active">
+                    <h2>Addition</h2>
+                    <input type="text" id="inp1">
+                    <input type="text" id="inp2">
+                    <button onclick="add()" class="btn btn-dark">+</button>
+                    <p id="result1"></p>
+                </div>
+                <div id="div2" class="col-lg-6 box">
+                    <h2>Subtraction</h2>
+                    <input type="text" id="inp3">
+                    <input type="text" id="inp4">
+                    <button onclick="minus()" class="btn btn-dark">-</button>
+                    <p id="result2"></p>
+                </div>
+                <div id="div3" class="col-lg-6 box">
+                    <h2>Multiplication</h2>
+                    <input type="text" id="inp5">
+                    <input type="text" id="inp6">
+                    <button onclick="multiply()" class="btn btn-dark">*</button>
+                    <p id="result3"></p>
+                </div>
+                <div id="div4" class="col-lg-6 box">
+                    <h2>Division</h2>
+                    <input type="text" id="inp7">
+                    <input type="text" id="inp8">
+                    <button onclick="divide()" class="btn btn-dark">/</button>
+                    <p id="result4"></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <input id="dayid" type="text" placeholder="date">
+        <input id="monthid" type="text" placeholder="month">
+        <input id="yearid" type="text" placeholder="year">
+        <button onlcick="agecal()" class="btn btn-dark">Age</button>
+        <p id="age"></p>'
+	</body>
+    <script>
+        document.write('<h1 class="font-weight-bold btn btn-primary">Hello</h1>');
+        console.log('How are you');
+        
+        // var date = new Date();
+        // window.alert(date);
+        // var year = date.getFullYear();
+        // window.alert(year);
+        // document.write('<br><input id="dayid" type="text" placeholder="date"><input id="monthid" type="text" placeholder="month"><input id="yearid" type="text" placeholder="year"><button onlcick="agecal()" id="agebtn" class="btn btn-dark">Age</button><p id="age"></p>');
+        function agecal(){
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth();
+            var day = date.getDate();
+            window.alert(year);
+            var dayinp = document.getElementById('dayid').value;
+            dayinp = parseInt(dayinp);
+
+            var monthinp = document.getElementById('monthid').value;
+            monthinp = parseInt(monthinp);
+
+            var yearinp = document.getElementById('yearid').value;
+            yearinp = parseInt(yearinp);
+
+            
+
+            var dateres = date - dayinp;
+            var monthres = month - monthinp;
+            var yearres = year - yearinp;
+
+            if (monthres < 0){
+                yearres - 1;
+            }
+            monthres = Math.abs(monthres);
+
+            if (dayres < 0){
+                monthres - 1;
+            }
+            dateres = Math.abs(dateres);
+
+            document.getElementById('age').innerHTML = 'You are ' + dayres + ' days ' + monthres + ' months and ' + yearres + ' years old';
+            
+        }
+        function add(){
+            var x = document.getElementById('inp1').value;
+            var y = document.getElementById('inp2').value;
+            var z = parseFloat(x)+parseFloat(y);
+            document.getElementById('result1').innerHTML = z;
+            document.getElementById('result1').classList.add('pclass');
+        }
+        function minus(){
+            var x = document.getElementById('inp3').value;
+            var y = document.getElementById('inp4').value;
+            var z = parseInt(x)-parseInt(y);
+            document.getElementById('result2').innerHTML = z;
+            document.getElementById('result2').classList.add('pclass');
+        }
+        function multiply(){
+            var x = document.getElementById('inp5').value;
+            var y = document.getElementById('inp6').value;
+            var z = parseInt(x)*parseInt(y);
+            document.getElementById('result3').innerHTML = z;
+            document.getElementById('result3').classList.add('pclass');
+        }
+        function divide(){
+            var x = document.getElementById('inp7').value;
+            var y = document.getElementById('inp8').value;
+            var z = parseInt(x)/parseInt(y);
+            document.getElementById('result4').innerHTML = z;
+            document.getElementById('result4').classList.add('pclass');
+        }
+        function show1(){
+            document.getElementById('div1').classList.add('active');
+            document.getElementById('div2').classList.remove('active');
+            document.getElementById('div3').classList.remove('active');
+            document.getElementById('div4').classList.remove('active');
+        }
+        function show2(){
+            document.getElementById('div2').classList.add('active');
+            document.getElementById('div1').classList.remove('active');
+            document.getElementById('div3').classList.remove('active');
+            document.getElementById('div4').classList.remove('active');
+        }
+        function show3(){
+            document.getElementById('div3').classList.add('active');
+            document.getElementById('div2').classList.remove('active');
+            document.getElementById('div1').classList.remove('active');
+            document.getElementById('div4').classList.remove('active');
+        }
+        function show4(){
+            document.getElementById('div4').classList.add('active');
+            document.getElementById('div2').classList.remove('active');
+            document.getElementById('div3').classList.remove('active');
+            document.getElementById('div1').classList.remove('active');
+        }
+        
+    </script>
+</html>

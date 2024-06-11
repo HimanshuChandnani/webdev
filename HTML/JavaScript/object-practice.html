@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<script>
+        let obj = {
+            name: ['Himanshu','Chitransh','Ajay'],
+            hindi: [67,98,78],
+            english: [87,76,88],
+            maths: [56,45,79],
+            science: [68,93,78],
+            total: [function(){return obj.hindi[0]+obj.english[0]+obj.maths[0]+obj.science[0]}, 
+            function(){return obj.hindi[1]+obj.english[1]+obj.maths[1]+obj.science[1]},
+            function(){return obj.hindi[2]+obj.english[2]+obj.maths[2]+obj.science[2]}]
+        }
+        document.write('<table class="table"><tr><th>Name</th><th>Hindi</th><th>English</th><th>Maths</th><th>Science</th><th>Total</th></tr><tr><td>'+obj.name[0]+'</td><td>'+obj.hindi[0]+'</td><td>'+obj.english[0]+'</td><td>'+obj.maths[0]+'</td><td>'+obj.science[0]+'</td><td>'+obj.total[0]()+'</td></tr><tr><td>'+obj.name[1]+'</td><td>'+obj.hindi[1]+'</td><td>'+obj.english[1]+'</td><td>'+obj.maths[1]+'</td><td>'+obj.science[1]+'</td><td>'+obj.total[1]()+'</td></tr><tr><td>'+obj.name[2]+'</td><td>'+obj.hindi[2]+'</td><td>'+obj.english[2]+'</td><td>'+obj.maths[2]+'</td><td>'+obj.science[2]+'</td><td>'+obj.total[2]()+'</td></tr></table><br><br><br>');
+
+
+
+        document.write('<table class="table"><tr><th>Name</th><th>Hindi</th><th>English</th><th>Maths</th><th>Science</th><th>Total</th></tr>');
+        for(let x in obj.name){
+            document.write('<tr>');
+            for(let y in obj){
+                if(y=='total'){
+                    document.write('<td>'+obj[y][x]()+'</td>');
+                }
+                else{
+                    document.write('<td>'+obj[y][x]+'</td>');
+                }
+            }
+            document.write('</tr>');
+        }
+        document.write('</table>');
+    </script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Calcultaion</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+            .box{
+                width: 30%;
+                margin: auto;
+                background-color: lightblue;
+                padding: 30px;
+                border-radius: 10px;
+                text-align: center;
+                input{
+                    width: 100px;
+                    padding: 5px;
+                    /* border-radius: 10px; */
+                    border: none;
+                    background-color: unset;
+                    outline: none !important;
+                }
+                input:nth-child(2){
+                    border-left:1px solid lightgrey;
+                    border-right:1px solid lightgrey;
+                }
+            }
+            .input{
+                border-radius: 10px;
+                display: inline-block;
+                background-color: white;
+            }
+		</style>
+	</head>
+	<body>
+        <div class="box">
+            <div class="input">
+                <input id="dayid" type="text" placeholder="date">
+                <input id="monthid" type="text" placeholder="month">
+                <input id="yearid" type="text" placeholder="year">
+            </div>
+            <button onclick="agecal()" class="btn btn-dark">Age</button>
+            <p id="age" class="mt-3 mb-0"></p>
+        </div>
+	</body>
+    <script>
+        // document.write('<h1 class="font-weight-bold btn btn-primary">Hello</h1>');
+        console.log('How are you');
+        
+        // var date = new Date();
+        // window.alert(date);
+        // var year = date.getFullYear();
+        // window.alert(year);
+        // document.write('<br><input id="dayid" type="text" placeholder="date"><input id="monthid" type="text" placeholder="month"><input id="yearid" type="text" placeholder="year"><button onlcick="agecal()" id="agebtn" class="btn btn-dark">Age</button><p id="age"></p>');
+        function agecal() {
+            var date = new Date();
+
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+
+            var dayinp = document.getElementById('dayid').value;
+            dayinp = parseInt(dayinp);
+
+            var monthinp = document.getElementById('monthid').value;
+            monthinp = parseInt(monthinp);
+
+            var yearinp = document.getElementById('yearid').value;
+            yearinp = parseInt(yearinp);
+
+            var dayres = day - dayinp;
+            var monthres = month - monthinp;
+            var yearres = year - yearinp;
+
+            // monthres = Math.abs(monthres);
+
+            if (dayres < 0){
+                monthres = monthres - 1;
+                if (monthres == 1 || monthres == 3 || monthres == 5 || monthres == 7 || monthres == 8 || monthres == 10 || monthres == 12){
+                    dayres = 31 + dayres;
+                }
+                else if (monthres == 2){
+                    dayres = 28 + dayres;
+                }
+                else {
+                    dayres = 30 + dayres;
+                }
+            }
+            // dayres = Math.abs(dayres);
+
+            if (monthres < 0){
+                yearres = yearres - 1;
+                monthres = 12 + monthres;
+            }
+
+            document.getElementById('age').innerHTML = 'You are ' + dayres + ' days ' + monthres + ' months and ' + yearres + ' years old';
+        }
+        let fname = '';
+        let lname = '';
+        function fullName(fname, lname){
+            document.write(fname + ' ' + lname);
+        }
+    </script>
+</html>

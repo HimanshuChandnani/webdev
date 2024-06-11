@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap4.6.2.css">
+		<style>
+			.game{
+                border: 2px solid black;
+                background-color:lightgray;
+                background-image: url(images/chess1.png);
+                width: 600px;
+                height: 600px;
+                margin: auto;
+                position: relative;
+                align-content: center;
+                text-align: -webkit-center;
+            }
+            .snake div{
+                border: 1px solid black;
+                background-color: green;
+                height: 20px;
+                width: 20px;
+                position: absolute;
+                left: 0;
+                top: 0;
+                transition: 0.2s;
+            }
+            .apple{
+                border: 1px solid black;
+                background-color:crimson;
+                height: 20px;
+                width: 20px;
+                position: absolute;
+            }
+            .gameOver{
+                height: 50%;
+                width: 70%;
+                background-color: white;
+                border: 2px solid black;
+                transform: scale(0);
+                transition: 0.2s;
+            }
+            .lost{
+                transform: scale(1);
+            }
+            .btn{
+                margin: 6px;
+            }
+            .square{
+                width:38px;
+            }
+            .face{
+                z-index: 2;
+                position: relative;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+                /* transform: rotate(0deg); */
+            }
+            .face::before{
+                content: ':3';
+                position: absolute;
+                font-weight: 900;
+                margin: -1px -6px;
+                font-size: 13px;
+            }
+		</style>
+	</head>
+	<body onkeydown="movement(event)">
+		<header></header>
+        <section class="container my-5">
+            <div id="points" class="text-center"></div>
+            <div class="game">
+                <div id="body" class="snake">
+                    <div id="snake" class="face"></div>
+                    <!-- <div id="tail"></div> -->
+                </div>
+                <div id="apple" class="apple"></div>
+                <div id="gameOver" class="gameOver">
+                    <h1>Game Over</h1>
+                    <button onclick="restart()" class="btn btn-dark">Try again</button>
+                </div>
+            </div>
+            <div class="controls text-center my-5">
+                <button onclick="add_tail();apple()" class="btn btn-dark">add tail</button><br>
+                <button onclick="up()" class="btn btn-dark square">↑</button><br>
+                <button onclick="left()" class="btn btn-dark square">←</button>
+                <button onclick="down()" class="btn btn-dark square">↓</button>
+                <button onclick="right()" class="btn btn-dark square">→</button>
+            </div>
+        </section>
+	</body>
+    <script>
+        const snake = document.getElementById('snake');
+        let x;
+        let y;
+        let point = 0;
+        let posarr = [[200,200]]
+        snake.style.top = posarr[0][0]+'px';
+        snake.style.left = posarr[0][1]+'px';
+        let interval;
+        let interval1;
+        let pos_interval;
+        let delay =200;
+        let tempkey;
+        let direction = '';
+        let size = 20;
+
+        function arr_asign(){
+            for(i=1;i<1000;i++){
+                posarr[i]=[0,0]
+            }
+        }
+        arr_asign()
+
+        function movement(event){
+            let key = event.key;
+            if (key!=tempkey){
+                if(key=='w'||key=='ArrowUp'){
+                    up();
+                }
+                if(key=='a'||key=='ArrowLeft'){
+                    left();
+                }
+                if(key=='s'||key=='ArrowDown'){
+                    down();
+                }
+                if(key=='d'||key=='ArrowRight'){
+                    right();
+                }
+            }
+            tempkey = key;
+        }
+
+        function up(){
+            if(direction!='d'){
+                direction = 'u';
+                snake.style.transform = 'rotate(270deg)';
+                stopper();
+                interval1 = setTimeout(function () {
+                    posarr[0][0] -= size;
+                    snake.style.top = posarr[0][0]+'px';
+                },10);
+                interval = setInterval(function () {
+                    posarr[0][0] -= size;
+                    snake.style.top = posarr[0][0]+'px';
+                }, delay);
+            }
+        }
+
+        function left(){
+            if(direction!='r'){
+                direction = 'l';
+                snake.style.transform = 'rotate(180deg)';
+                stopper();
+                interval1 = setTimeout(function () {
+                    posarr[0][1] -= size;
+                    snake.style.left = posarr[0][1]+'px';
+                }, 10);
+                interval = setInterval(function () {
+                    posarr[0][1] -= size;
+                    snake.style.left = posarr[0][1]+'px';
+                }, delay);
+            }
+        }
+
+        function down(){
+            if(direction!='u'){
+                direction = 'd';
+                snake.style.transform = 'rotate(90deg)';
+                stopper();
+                interval1 = setTimeout(function () {
+                    posarr[0][0] += size;
+                    snake.style.top = posarr[0][0]+'px';
+                }, 10);
+                interval = setInterval(function () {
+                    posarr[0][0] += size;
+                    snake.style.top = posarr[0][0]+'px';
+                }, delay);
+            }
+        }
+
+        function right(){
+            if(direction!='l'){
+                direction = 'r';
+                snake.style.transform = 'rotate(0deg)';
+                stopper();
+                interval1 = setTimeout(function () {
+                    posarr[0][1] += size;
+                    snake.style.left = posarr[0][1]+'px';
+                }, 10);
+                interval = setInterval(function () {
+                    posarr[0][1] += size;
+                    snake.style.left = posarr[0][1]+'px';
+                }, delay);
+            }
+        }
+
+        function add_tail(){
+            var tail = document.createElement('div');
+            var head = document.getElementById('body');
+            head.appendChild(tail);
+            tail.style.top = posarr[0][0];
+            tail.style.left = posarr[0][1];
+        }
+        
+        function snake_tail(){
+            setInterval(function () {
+                var head = document.getElementById('body');
+                var snakelen = head.children.length;
+                for(i=1;i<snakelen;i++){
+                    head.children[i].style.top = posarr[i][0]+'px';
+                    head.children[i].style.left = posarr[i][1]+'px';
+                }
+            }, 100);
+        }
+        snake_tail();
+
+        function position(){
+            pos_interval = setInterval(function () {
+                var amount = document.getElementById('body').children.length;
+                for(i=amount+1;i>=1;i--){
+                    posarr[i][0]=posarr[i-1][0];
+                    posarr[i][1]=posarr[i-1][1];
+                }
+            }, delay);
+        }
+
+        function tail_delete(){
+            var len = document.getElementById('body').children.length;
+            for(i=1;i<len;i++){
+                document.getElementById('body').children[1].remove();
+            }
+        }
+        position();
+
+        function stopper(){
+            clearInterval(interval);
+            clearInterval(interval1);
+        }
+        function apple(){
+            var len = document.getElementById('body').children.length
+            x = Math.floor((Math.random() * 29) + 1);
+            y = Math.floor((Math.random() * 29) + 1);
+            for(i=0;i<len;i++){
+                if(x*size==posarr[i][1]&&y*size==posarr[i][0]){
+                    x = Math.floor((Math.random() * 29) + 1);
+                    y = Math.floor((Math.random() * 29) + 1);
+                }
+            }
+            let apple = document.getElementById('apple');
+            apple.style.left = (x*20)+'px';
+            apple.style.top = (y*20)+'px';
+            document.getElementById('points').innerHTML='Points: '+point;
+            point++;
+        }
+        apple();
+
+        function eat(){
+            setInterval(function () {
+                if(posarr[0][1]==x*size && posarr[0][0]==y*size){
+                    apple();
+                    add_tail();
+                }
+            }, delay);
+        }
+        eat();
+
+        function gameOver(){
+            setInterval(function () {
+                if(posarr[0][1]<0||posarr[0][1]>580||posarr[0][0]<0||posarr[0][0]>580){
+                    stopper();
+                    document.getElementById('gameOver').classList.add('lost');
+                    clearInterval(pos_interval);
+                }
+                var len = document.getElementById('body').children.length;
+                for(i=2;i<len;i++){
+                    if(posarr[0][0]==posarr[i][0]&&posarr[0][1]==posarr[i][1]){
+                        stopper();
+                        document.getElementById('gameOver').classList.add('lost');
+                        clearInterval(pos_interval);
+                    }
+                }
+            },0);
+        }
+        gameOver();
+
+        function restart(){
+            posarr[0][1] = 200;
+            posarr[0][0] = 200;
+            snake.style.left = '200px';
+            snake.style.top = '200px';
+            document.getElementById('gameOver').classList.remove('lost');
+            tempkey = '';
+            point = 0;
+            direction = '';
+            apple();
+            tail_delete();
+            arr_asign();
+            position();
+        }
+    </script>
+</html>
