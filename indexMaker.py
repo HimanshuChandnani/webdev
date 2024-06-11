@@ -1,11 +1,14 @@
 import os
 
-def generate_index_file(output_file='index.html'):
+def generate_index_file():
+    script_dir = os.path.abspath(os.path.dirname(__file__))
+    output_file = os.path.join(script_dir, 'index.html')
+    
     with open(output_file, 'w') as f:
         f.write('''<!DOCTYPE html>
 <html>
 <head>
-    <title>Project Index</title>
+    <title>File Index</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,20 +30,20 @@ def generate_index_file(output_file='index.html'):
 <ul>
 ''')
 
-        def write_directory(path, f):
+        def write_directory(path, base_path, f):
             f.write('<ul>')
             for item in sorted(os.listdir(path)):
                 item_path = os.path.join(path, item)
+                relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
                 if os.path.isdir(item_path):
                     f.write(f'<li class="folder" onclick="toggleFolder(event, this)">{item}')
-                    write_directory(item_path, f)
+                    write_directory(item_path, base_path, f)
                     f.write('</li>')
                 else:
-                    file_path = os.path.join(path, item).replace("\\", "/")
-                    f.write(f'<li class="file"><a href="{file_path}">{item}</a></li>')
+                    f.write(f'<li class="file"><a href="{relative_path}">{item}</a></li>')
             f.write('</ul>')
 
-        write_directory('.', f)
+        write_directory(script_dir, script_dir, f)
 
         f.write('''
 </ul>
