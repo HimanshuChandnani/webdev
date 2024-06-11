@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body{
+				margin: auto;
+			}
+			header{
+				background:black;
+				color:white;
+				display: flex;
+				padding: 25px;
+			}
+			a{
+				color:white;
+				text-decoration: none;
+			}
+			nav{
+				flex: 0 0 92%;
+  				text-align: right;
+				padding-top: 60px;
+			}
+			a{
+				margin: 0 20px;
+			}
+			.banner{
+				background-image: url('images/painting-mountain-lake-with-mountain-background.jpg');
+				width: 90%;
+				height: 400px;
+				background-size: cover;
+				background-position: center;
+				margin: auto;
+				margin-top: 50px;
+				border-radius: 6vh;
+				transition: 200ms;
+			}
+			.banner:hover{
+				box-shadow: 0px 0px 10px 6px black;
+				height: 800px;
+			}
+			section, aside{
+				margin: 7% 5%;
+			}
+			aside{
+				margin-left: 50%;
+				margin-bottom: 310px;
+			}
+			.img img{
+				margin-right: 2%;
+				margin-top: 5%;
+				border-radius: 2vh;
+				transition: 200ms;
+			}
+			.img img:hover{
+				box-shadow: 0px 0px 10px 6px black;
+				
+			}
+			footer{
+				padding: 2% 5% 1% 5%;
+				margin-top: 10%;
+				background-color: lightgray;
+			}
+			footer .flex{
+				display: flex;
+			}
+			.f1, .f2, .f3{
+				margin: auto;
+			}
+			.f1{
+				margin-left: 0;
+				width: 16%;
+			}
+			.f3{
+				margin-right: 0;
+			}
+			.f4{
+				text-align: center;
+				color: gray;
+				margin-top: 2%;
+			}
+			input {
+			float: right;
+			padding: 0px;
+			}
+		</style>		
+	</head>
+	<body>
+		<header>
+			<h1>Blog Post</h1>
+			<nav>
+				<div>
+					<a href="">Home</a>
+					<a href="">Galery</a>
+					<a href="">Services</a>
+					<a href="">About Us</a>
+				</div>
+			</nav>
+		</header>
+		<div class="banner"></div>
+			<section>
+				<img style="border-radius: 5vh;" align="left" width="45%" src="images/32497.jpg">
+			</section>
+			<aside>
+				<h2>Title</h2>
+				<p>This is an image This is an image This is an image This is an image This is an imageThis is an image This is an image This is an image This is an image This is an image This is an imageThis is an image This is an image This is an image This is an image This is an image This is an imageThis is an image</p>
+				<a style="background-color: grey; float: right; margin-top: 29%; padding: 1.5%;" href="">Read More</a>
+			</aside>
+		<div class="img">
+			<section style="text-align: center;">
+				<img width="18%" src="images/32497.jpg">
+				<img width="18%" src="images/32497.jpg">
+				<img width="18%" src="images/32497.jpg">
+				<img width="18%" src="images/32497.jpg">
+				<img style="margin-right:0;" width="18%" src="images/32497.jpg">
+				<a href="" style="margin: 0.5%; background-color: grey; float: right; padding: 0.7%;">More images</a>
+			</section>
+		</div>
+		<footer>
+			<div class="flex">
+				<div class="f1">
+					<form>
+						<label>Name:</label>
+						<input type="text" placeholder="enter your name"><br>
+						<label>Email:</label>
+						<input type="email" placeholder="enter your email address"><br>
+						<label>Phone no.</label>
+						<input type="number" placeholder="enter your number"><br>
+						<input type="submit">
+					</form>
+				</div>
+				<div class="f2">
+					<ul style="margin: 0;">
+						<h3 style="margin: 0;">Services</h3>
+						<li>Some services Some services</li>
+						<li>Some services Some services</li>
+						<li>Some services Some services</li>
+						<li>Some services Some services</li>
+						<li>Some services Some services</li>
+					</ul>
+				</div>
+				<div class="f3">
+					<h1>Blog Post</h1>
+				</div>
+			</div>
+			<div class="f4"><p style="margin: 0px;">Copyrights and stuff Copyrights and stuff</p></div>
+		</footer>
+	</body>
+</html>
