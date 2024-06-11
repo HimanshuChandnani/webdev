@@ -32,7 +32,7 @@ def generate_index_file(output_file='index.html'):
             for item in sorted(os.listdir(path)):
                 item_path = os.path.join(path, item)
                 if os.path.isdir(item_path):
-                    f.write(f'<li class="folder" onclick="toggleFolder(this)">{item}')
+                    f.write(f'<li class="folder" onclick="toggleFolder(event, this)">{item}')
                     write_directory(item_path, f)
                     f.write('</li>')
                 else:
@@ -45,7 +45,8 @@ def generate_index_file(output_file='index.html'):
         f.write('''
 </ul>
 <script>
-    function toggleFolder(folder) {
+    function toggleFolder(event, folder) {
+        event.stopPropagation();
         var sublist = folder.querySelector('ul');
         if (sublist.style.display === 'none') {
             sublist.style.display = 'block';
