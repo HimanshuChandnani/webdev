@@ -76,10 +76,31 @@
 			let y = event.clientY-h/2;
 
 			img.style.transform = 'rotateY('+x/25*-1+'deg) rotateX('+y/14+'deg)';
+			var newx1 = parseInt(img.style.left);
+			var newy1 = parseInt(img.style.top);
+			img.style.left = newx1+(x/25/5*-1)+'px';
+			img.style.top = newy1+(y/14/5*-1)+'px';
+
 			img2.style.transform = 'rotateY('+x/35*-1+'deg) rotateX('+y/24+'deg)';
+			var newx2 = parseInt(img2.style.left);
+			var newy2 = parseInt(img2.style.top);
+			img2.style.left = newx2+(x/35/5*-1)+'px';
+			img2.style.top = newy4+(y/24/5*-1)+'px';
+
 			imglogo.style.transform = 'rotateY('+x/35*-1+'deg) rotateX('+y/24+'deg)';
+
 			img3.style.transform = 'rotateY('+x/45*-1+'deg) rotateX('+y/34+'deg)';
+			var newx3 = parseInt(img3.style.left);
+			var newy3 = parseInt(img3.style.top);
+			img3.style.left = newx3+(x/45/5*-1)+'px';
+			img3.style.top = newy3+(y/34/5*-1)+'px';
+
 			img4.style.transform = 'rotateY('+x/65*-1+'deg) rotateX('+y/54+'deg)';
+			var newx4 = parseInt(img4.style.left);
+			var newy4 = parseInt(img4.style.top);
+			img4.style.left = newx4+(x/65/10*-1)+'px';
+			img4.style.top = newy4+(y/54/10*-1)+'px';
+
 			console.log(x +', '+ y)
 		}
 	</script>
