@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../Bootstrap/bootstrap4.6.2.css">
+		<style>
+			body::-webkit-scrollbar {
+			  display: none; 
+			}
+			header{
+				background-image:linear-gradient(to right, grey, black);
+			}
+			header a:-webkit-any-link{
+				text-decoration:none;
+			}
+			header a::before{
+				content:'';
+				background-image:url('../svg/chilli-pepper-icon.svg');
+				background-size:contain;
+				background-repeat:no-repeat;
+				padding:6px;
+				position:absolute;
+				right: 6px;
+				bottom: -16px;
+				transition:0.5s;
+				opacity:0;
+			}
+			header a:hover::before, header a.active::before{
+				bottom:-10px;
+				opacity:1;
+			}
+			header a::after{
+				content:'';
+				padding:1.5px 0px;
+				position:absolute;
+				bottom: -5px;
+				left: 11px;
+				width: 0%;
+				transition:0.5s;
+			}
+			header a:hover::after, header a.active::after{
+				width:calc(100% - 32px);
+				background-color:white;
+			}
+			.flex{display:flex;}
+			.anchor{position:relative;}
+			.img img{
+				border-radius:10px;
+				transition:0.2s;
+				::after{
+					content:'Know more';
+					background-color:white;
+					
+				}
+			}
+			.img img:hover{
+				box-shadow:0px 0px 6px black;
+			}
+			.img img::after{
+				
+			}
+			.ban1{
+				background-image:url(images1/about.jpg);
+				height:300px;
+				width:100%;
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size:cover;
+				position:absolute;
+				left:0;
+			}
+			.ban2{
+				background-image:url(images1/img-01.jpg);
+				height:300px;
+				width:100%;
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size:cover;
+				position:absolute;
+				left:0;
+			}
+			.ban3{
+				background-image:url(images1/pic5.jpg);
+				height:300px;
+				width:100%;
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size:cover;
+				position:absolute;
+				left:0;
+			}
+			.ban1{
+				animation-name:move1;
+				animation-duration:10s;
+			}
+			.ban2{
+				animation-name:move2;
+				animation-duration:10s;
+			}
+			.ban3{
+				animation-name:move3;
+				animation-duration:10s;
+			}
+			@keyframes move1{
+			0%{left:0;}
+			25%{left:-100%}
+			26%{left:-100%; z-index:-1;}
+			49%{left:100%}
+			50%{left:100% z-index:1;}
+			75%{left:0;}
+			}
+			@keyframes move2{
+			0%{left:100%; z-index:1;}
+			25%{left:0}
+			50%{left:-100%;}
+			51%{left:-100%; z-index:-1;}
+			}
+			@keyframes move3{
+			0%{left:100%;}
+			25%{left:100%; z-index:1;}
+			50%{left:0;}
+			75%{left:-100%;}
+			76%{left:-100%; z-index:-1;}
+			}
+			.rowow{
+				height:300px;
+				margin:0;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<div class="row py-4">
+					<div class="col-6 flex">
+						<div class="anchor">
+						<a href="" class="text-white mx-2 h4">Home</a>
+						</div>
+						<div class="anchor">
+						<a href="" class="text-white mx-2 h4 active">Gallery</a>
+						</div>
+						<div class="anchor">
+						<a href="" class="text-white mx-2 h4">Contact</a>
+						</div>
+						<div class="anchor">
+						<a href="" class="text-white mx-2 h4">About</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="banner">
+			<div class="row rowow">
+				<div class="col-lg-12 ban1"></div>
+				<div class="col-lg-12 ban2"></div>
+				<div class="col-lg-12 ban3"></div>
+			</div>
+		</div>
+		<div class="container img">
+			<div class="row">
+				<div class="col-lg-3 mx-auto my-3">
+					<img width="100%" src="images1/01.jpg">
+				</div>
+				<div class="col-lg-3 mx-auto my-3">
+					<img width="100%" src="images1/02.jpg">
+				</div>
+				<div class="col-lg-3 mx-auto my-3">
+					<img width="100%" src="images1/03.jpg">
+				</div>
+				<div class="col-lg-3 mx-auto my-3">
+					<img width="100%" src="images1/04.jpg">
+				</div>
+				<div class="col-lg-3 mx-auto my-3">
+					<img width="100%" src="images1/05.jpg">
+				</div>
+				<div class="col-lg-3 mx-auto my-3">
+					<img width="100%" src="images1/06.jpg">
+				</div>
+				<div class="col-lg-3 mx-auto my-3">
+					<img width="100%" src="images1/07.jpg">
+				</div>
+				<div class="col-lg-3 mx-auto my-3">
+					<img width="100%" src="images1/08.jpg">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

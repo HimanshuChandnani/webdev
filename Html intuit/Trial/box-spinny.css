@@ -1,0 +1,76 @@
+body{
+		overflow:hidden;
+}
+.container{
+	margin:70px auto;
+    width: 400px;
+    height: 400px;
+}
+.box{
+	height: calc(100% - 9px);
+    border: 1px solid;
+    padding: 2px;
+    animation-name: spin;
+    animation-duration: 200s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    width: calc(100% - 9px);
+    /* border-radius: 104px; */
+    border: ridge;
+    border-top: solid;
+}
+@keyframes spin{
+	0%		{transform: rotate(0deg);}
+	100%	{transform: rotate(360deg);}
+    /* 0% { background-color: #ff0000; transform: rotate(0deg); }
+    2% { background-color: #ff8000; }
+    4% { background-color: #ffff00; }
+    6% { background-color: #80ff00; }
+    8% { background-color: #00ff00; }
+    10% { background-color: #00ff80; }
+    12% { background-color: #00ffff; }
+    14% { background-color: #0080ff; }
+    16% { background-color: #0000ff; }
+    18% { background-color: #8000ff; }
+    20% { background-color: #ff00ff; }
+    22% { background-color: #ff0080; }
+    24% { background-color: #ff0000; }
+    26% { background-color: #ff8000; }
+    28% { background-color: #ffff00; }
+    30% { background-color: #80ff00; }
+    32% { background-color: #00ff00; }
+    34% { background-color: #00ff80; }
+    36% { background-color: #00ffff; }
+    38% { background-color: #0080ff; }
+    40% { background-color: #0000ff; }
+    42% { background-color: #8000ff; }
+    44% { background-color: #ff00ff; }
+    46% { background-color: #ff0080; }
+    48% { background-color: #ff0000; }
+    50% { background-color: #ff8000; }
+    52% { background-color: #ffff00; }
+    54% { background-color: #80ff00; }
+    56% { background-color: #00ff00; }
+    58% { background-color: #00ff80; }
+    60% { background-color: #00ffff; }
+    62% { background-color: #0080ff; }
+    64% { background-color: #0000ff; }
+    66% { background-color: #8000ff; }
+    68% { background-color: #ff00ff; }
+    70% { background-color: #ff0080; }
+    72% { background-color: #ff0000; }
+    74% { background-color: #ff8000; }
+    76% { background-color: #ffff00; }
+    78% { background-color: #80ff00; }
+    80% { background-color: #00ff00; }
+    82% { background-color: #00ff80; }
+    84% { background-color: #00ffff; }
+    86% { background-color: #0080ff; }
+    88% { background-color: #0000ff; }
+    90% { background-color: #8000ff; }
+    92% { background-color: #ff00ff; }
+    94% { background-color: #ff0080; }
+    96% { background-color: #ff0000; }
+    98% { background-color: #ff8000; }
+    100% { background-color: #0000ff; transform: rotate(360deg); } */
+}

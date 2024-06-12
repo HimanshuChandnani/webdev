@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			td{
+				width:50px;
+				height:50px;
+			}
+			tr:nth-child(odd) td:nth-child(even):hover{
+				box-shadow:2px 2px 2 black;
+			}
+			tr:nth-child(odd) td:nth-child(even){
+				background-color:black;
+			}
+			tr:nth-child(even) td:nth-child(odd){
+				background-color:black;
+			}
+			tr:nth-child(odd) td:nth-child(odd){
+				background-color:lightgrey;
+			}
+			tr:nth-child(even) td:nth-child(even){
+				background-color:lightgrey;
+			}
+			table{
+				border-collapse:collapse;
+			}
+			tr:nth-child(odd) td:nth-child(even),tr:nth-child(even) td:nth-child(odd){
+				animation-iteration-count:infinite;
+				position:relative;
+				animation-name: example;
+				animation-duration: 2s;
+				animation-direction: alternate-reverse;  
+			}
+			@keyframes example {
+			  0%   {left:0px; top:0px;}
+			  25%  {background-color:lightgrey;left:53px; top:0px;}
+			  50%  {background-color:black;left:53px; top:53px;}
+			  75%  {background-color:lightgrey; width:10px; left:0px; top:53px;}
+			  100% {left:0px; top:0px;}
+			}
+			tr:nth-child(odd) td:nth-child(odd),tr:nth-child(even) td:nth-child(even){
+				animation-iteration-count:infinite;
+				position:relative;
+				animation-name: example1;
+				animation-duration: 2s;
+				animation-direction: alternate-reverse;  
+			}
+			@keyframes example1 {
+			  0%   {left:0px; top:0px;}
+			  25%  {background-color:black;left:-53px; top:0px;}
+			  50%  {background-color:lightgrey;left:-53px; top:-53px;}
+			  75%  {background-color:black;left:0px; top:-53px;}
+			  100% {left:0px; top:0px;}
+			}
+		</style>
+		<link rel="icon" href="ico/transparent-background-icon.ico">
+	</head>
+	<body>
+		<table border="1">
+			<caption>Chess nth child</caption>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+header{
+	display:flex;
+	background-color:black;
+	justify-content: space-between;
+	padding:1% 10%;
+	a{
+		color:white !important;
+		font-weight:bold;
+	}
+}
+footer{
+	background-color:lightgrey;
+	padding:2% 10%;
+	text-align:center;
+}
+section{
+	padding: 3% 10%;
+}
+section .flex{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content: space-between;
+} 
+.half{
+	width:48%;
+}
+.quater{
+	width:24%;
+	margin-bottom:20px;
+}
+@media (max-width:768px){
+	.half{
+	width:100%;
+	}
+	.quater{
+	width:32%;
+	margin-bottom:20px;
+	}
+}

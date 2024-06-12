@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../Bootstrap/bootstrap4.6.2.css">
+		<style>
+			<!-- body::-webkit-scrollbar { -->
+			  <!-- display: none;  -->
+			<!-- } -->
+			header{
+				background-image:linear-gradient(to right, grey, black);
+			}
+			header a:-webkit-any-link{
+				text-decoration:none;
+			}
+			header .anchor a::before{
+				content:'';
+				background-image:url('../svg/chilli-pepper-icon.svg');
+				background-size:contain;
+				background-repeat:no-repeat;
+				padding:6px;
+				position:absolute;
+				right: 6px;
+				bottom: -16px;
+				transition:0.5s;
+				opacity:0;
+			}
+			header .anchor a:hover::before, header a.active::before{
+				bottom:-10px;
+				opacity:1;
+			}
+			header .anchor a::after{
+				content:'';
+				padding:1.5px 0px;
+				position:absolute;
+				bottom: -5px;
+				left: 11px;
+				width: 0%;
+				transition:0.5s;
+			}
+			header .anchor a:hover::after, header a.active::after{
+				width:calc(100% - 32px);
+				background-color:white;
+			}
+			header .car{
+				display:flex;
+				a{height:auto;}
+				svg{
+					fill:white;
+					transform:scalex(-1);
+					width:70px;
+					height:auto;
+					transition:0.5s;
+					margin-left:10px
+				}
+			}
+			header .car:hover svg{
+				margin-left:100px;
+			}
+			.flex{display:flex; flex-wrap:wrap;}
+			.anchor{position:relative;}
+			.img img{
+				border-radius:10px;
+				transition:0.2s;
+			}
+			.img .box:hover img{
+				box-shadow:0px 0px 6px black;
+			}
+			.img .grad{
+				background-image:linear-gradient(transparent,black);
+				width:100%;
+				height:0%;
+				position: absolute;
+				border-radius:10px;
+				transition:0.2s;
+				opacity:0;
+				bottom:0;
+			}
+			.img .box:hover .grad{
+				opacity:1;
+				height:100%;
+			}
+			.box1{
+				width: 100%;
+				position: relative;
+			}
+			.img .box:hover .grad::after{
+					opacity:1;
+					transform:translateY(-15px);
+			}
+			.img .grad::after{
+				content:"Find out more";
+				background-color:white;
+				border-radius:10px;
+				position:absolute;
+				padding:8px 10px;
+				bottom:0;
+				right:15px;
+				cursor:pointer;
+				opacity:0;
+				transition:0.4s;
+				transition-delay:0.2s;
+			}
+			.ban1{
+				background-image: linear-gradient(black, transparent), url(images1/about.jpg);
+				height:300px;
+				width:100%;
+				background-repeat:no-repeat;
+				background-position:center;
+				background-size:cover;
+				left:0;
+			}
+			.ban1::before{
+				content:"there is some text here there is some text here there is some text here";
+				color:white;
+				font-size:20px;
+				margin:auto;
+				position:absolute;
+				text-align:center;
+				width:95%;
+			}
+			.rowow{
+				height:300px;
+				margin:0;
+			}
+			.appear{
+				background-color:white;
+				padding:12px 20px;
+				position:absolute;
+				z-index:-5;
+				width:220px;
+				box-shadow:0 0 5px white;
+				border-top: 3px solid black;
+				opacity:0;
+				transition:0.5s;
+				top: 47px;
+				left: 8px;
+				height:0;
+				overflow:hidden;
+			}
+			.list:hover .appear, a{
+				opacity:1;
+				z-index:5;
+				height:230px;
+			}
+			.thing{
+				margin-bottom:-130px;
+			}
+			.thing .svg1{
+				position: relative;
+				top: -80px;
+			}
+			.thing .inside{
+				color:white;
+				position:absolute;
+				text-align: center;
+				top: 7px;
+				left:0;
+				h4{
+					font-size:2vw;
+				}
+				p{
+					margin:0 50px;
+					font-size:1.2vw;
+				}
+				svg{
+					fill:white;
+					width:60px;
+					margin-bottom:15px;
+				}
+				transition:2.2s;
+			}
+			.thing .col-lg-4:hover{
+				.svg1{
+					fill:lightgray;
+				}
+				.inside{
+					color:black;
+					svg{
+						fill:black;
+					}
+				}
+			}
+			.svg1{
+				margin-bottom:50px;
+			}
+			footer{
+				background-image:linear-gradient(to right, lightgray, grey);
+				text-align:center;
+				padding:20px 0;
+				p{margin:0;}
+			}
+			@media only screen and (max-width: 1024px){
+				.thing .inside{
+					top:-16px;
+				}
+			}
+			@media only screen and (max-width: 768px){
+				.thing .inside{
+					top:-6px;
+					p{font-size:2vw}
+					h4{font-size:3vw}
+				}
+			}
+			@media only screen and (max-width: 425px){
+				.thing .inside{
+					top:0;
+					svg{width:30%}
+					p{font-size:3.3vw}
+					h4{font-size:5vw}
+				}
+			}
+			.travel{
+				background-image:url('images1/travel_road.jpg');
+				width:100%;
+				height:400px;
+				background-repeat:no-repeat;
+				background-size:cover;
+				background-position:center;
+				position:relative;
+				overflow-x:hidden;
+				img{
+					width: 6%;
+					position:absolute;
+					animation-timing-function: cubic-bezier(0, 0, 1, 1.67);
+					animation-iteration-count: infinite;
+					animation-delay:2s;
+				}
+				.car1{
+					right:-80px;
+					margin-top: 21%;
+					animation-duration:20s;
+					animation-name:rightcar;
+				}
+				.car2{
+					left:-80px;
+					margin-top: 24%;
+					animation-duration:12s;
+					animation-name:leftcar1;
+				}
+				.car3{
+					left:-80px;
+					margin-top: 22%;
+					animation-duration:17s;
+					animation-name:leftcar2;
+				}
+			}
+			@keyframes rightcar{
+				0%		{margin-right:0;}
+				50%		{margin-right:107%; transform:scaleX(1);  margin-top:21%}
+				50.1%	{transform:scaleX(-1); margin-top:23%}
+				99.9%	{transform:scaleX(-1); margin-top:23%}
+				100%	{margin-right:0; transform:scaleX(1);  margin-top:21%}
+			}
+			@keyframes leftcar1{
+				0%		{margin-left:0;}
+				50%		{margin-left:107%; transform:scaleX(1); margin-top: 24%;}
+				50.1%	{transform:scaleX(-1); margin-top: 22%;}
+				99.9%	{transform:scaleX(-1); margin-top: 22%;}
+				100%	{margin-left:0; transform:scaleX(1); margin-top: 24%;}
+			}
+			@keyframes leftcar2{
+				0%		{margin-left:0;}
+				50%		{margin-left:107%; transform:scaleX(1); margin-top: 22%;}
+				50.1%	{transform:scaleX(-1); margin-top: 19.5%;}
+				99.9%	{transform:scaleX(-1); margin-top: 19.5%;}
+				100%	{margin-left:0; transform:scaleX(1); margin-top: 22%;}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<div class="row py-4">
+					<div class="col-8 flex">
+						<div class="anchor">
+							<a href="" class="text-white mx-2 h4">Home</a>
+						</div>
+						<div class="anchor">
+							<a href="" class="text-white mx-2 h4 active">Gallery</a>
+						</div>
+						<div class="anchor">
+							<a href="" class="text-white mx-2 h4">Contact</a>
+						</div>
+						<div class="anchor">
+							<a href="" class="text-white mx-2 h4">About</a>
+						</div>
+						<div class="anchor list">
+							<a href="" class="text-white mx-2 h4 ">Services▿</a>
+							<div class="appear">
+								<p>
+									<a href="">Basement Renovation</a><hr>
+									<a href="">Kitchen Renovation</a><hr>
+									<a href="">Kitchen Renovation</a><hr>
+									<a href="">Bathroom Renovation</a><hr>
+									<a href="">Entire Home Renovation</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 car">
+						<a class="btn btn-outline-warning" href="">brrrrrrrrr</a>
+						<?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 35.03" style="enable-background:new 0 0 122.88 35.03" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M99.42,13.57c5.93,0,10.73,4.8,10.73,10.73c0,5.93-4.8,10.73-10.73,10.73s-10.73-4.8-10.73-10.73 C88.69,18.37,93.49,13.57,99.42,13.57L99.42,13.57z M79.05,5c-0.59,1.27-1.06,2.69-1.42,4.23c-0.82,2.57,0.39,3.11,3.19,2.06 c2.06-1.23,4.12-2.47,6.18-3.7c1.05-0.74,1.55-1.47,1.38-2.19c-0.34-1.42-3.08-2.16-5.33-2.6C80.19,2.23,80.39,2.11,79.05,5 L79.05,5z M23.86,19.31c2.75,0,4.99,2.23,4.99,4.99c0,2.75-2.23,4.99-4.99,4.99c-2.75,0-4.99-2.23-4.99-4.99 C18.87,21.54,21.1,19.31,23.86,19.31L23.86,19.31z M99.42,19.31c2.75,0,4.99,2.23,4.99,4.99c0,2.75-2.23,4.99-4.99,4.99 c-2.75,0-4.99-2.23-4.99-4.99C94.43,21.54,96.66,19.31,99.42,19.31L99.42,19.31z M46.14,12.5c2.77-2.97,5.97-4.9,9.67-6.76 c8.1-4.08,13.06-3.58,21.66-3.58l-2.89,7.5c-1.21,1.6-2.58,2.73-4.66,2.84H46.14L46.14,12.5z M23.86,13.57 c5.93,0,10.73,4.8,10.73,10.73c0,5.93-4.8,10.73-10.73,10.73s-10.73-4.8-10.73-10.73C13.13,18.37,17.93,13.57,23.86,13.57 L23.86,13.57z M40.82,10.3c3.52-2.19,7.35-4.15,11.59-5.82c12.91-5.09,22.78-6,36.32-1.9c4.08,1.55,8.16,3.1,12.24,4.06 c4.03,0.96,21.48,1.88,21.91,4.81l-4.31,5.15c1.57,1.36,2.85,3.03,3.32,5.64c-0.13,1.61-0.57,2.96-1.33,4.04 c-1.29,1.85-5.07,3.76-7.11,2.67c-0.65-0.35-1.02-1.05-1.01-2.24c0.06-23.9-28.79-21.18-26.62,2.82H35.48 C44.8,5.49,5.04,5.4,12.1,28.7C9.62,31.38,3.77,27.34,0,18.75c1.03-1.02,2.16-1.99,3.42-2.89c-0.06-0.05,0.06,0.19-0.15-0.17 c-0.21-0.36,0.51-1.87,1.99-2.74C13.02,8.4,31.73,8.52,40.82,10.3L40.82,10.3z"/></g></svg>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="banner">
+			<div class="row rowow">
+				<div class="col-lg-12 ban1"></div>
+			</div>
+		</div>
+		<div class="container thing">
+			<div class="row">
+				<div class="col-lg-4 col-sm-6 col-12 mx-auto">
+					<?xml version="1.0" encoding="utf-8"?><svg class="svg1" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 98.89" style="enable-background:new 0 0 122.88 98.89" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M1.72,92h119.43c0.94,0,1.72,0.79,1.72,1.72v3.44c0,0.93-0.78,1.72-1.72,1.72H1.72C0.78,98.89,0,98.12,0,97.17 v-3.44C0,92.78,0.78,92,1.72,92L1.72,92z M66.4,19.73c31.57,2.52,56.4,25.25,56.4,57.47c0,2.62-0.17,5.19-0.48,7.72l-121.75,0 c-0.32-2.56-0.48-5.14-0.48-7.73c0-32.37,25.06-55.19,56.83-57.5V9.92l-9.68,0c-0.98,0-1.78-0.8-1.78-1.78V1.78 c0-0.98,0.8-1.78,1.78-1.78h28.7c0.98,0,1.78,0.8,1.78,1.78v6.37c0,0.98-0.8,1.78-1.78,1.78H66.4L66.4,19.73L66.4,19.73L66.4,19.73 z"/></g></svg>
+					<div class="inside">
+						<?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 89.2" style="enable-background:new 0 0 122.88 89.2" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M122.88,21.37c0.05,2.89-0.53,11.16-1.68,24.86h-1.78V89.2l-6,0V46.23h-0.99V0c2.02,0.31,3.76,1.23,5.15,2.75 C121.07,6.31,122.83,12.53,122.88,21.37L122.88,21.37z M107.27,44.52c0,12.04-4.24,22.33-12.72,30.81 c-8.5,8.5-18.77,12.74-30.81,12.74c-12,0-22.26-4.24-30.78-12.74c-8.5-8.48-12.77-18.77-12.77-30.81c0-12,4.26-22.24,12.77-30.76 c8.53-8.5,18.79-12.77,30.78-12.77c12.04,0,22.31,4.26,30.81,12.77C103.03,22.28,107.27,32.52,107.27,44.52L107.27,44.52 L107.27,44.52z M20.69,23.22c0,2.96-1.23,5.4-3.69,7.3c-2.43,1.9-3.66,3.57-3.66,4.96V89.2h-6V35.48c0-1.4-1.23-3.06-3.66-4.96 C1.23,28.62,0,26.19,0,23.22C0,15.18,1.78,7.42,5.37,0v19.9h3.18V0h3.52v19.9h3.25V0C18.89,7.42,20.69,15.18,20.69,23.22 L20.69,23.22z M95.49,44.52c0-8.74-3.08-16.21-9.27-22.4c-6.19-6.19-13.68-9.27-22.48-9.27c-8.77,0-16.24,3.08-22.4,9.27 c-6.19,6.19-9.3,13.66-9.3,22.4c0,8.76,3.11,16.23,9.3,22.45c6.16,6.21,13.63,9.32,22.4,9.32c8.79,0,16.28-3.11,22.48-9.32 C92.4,60.75,95.49,53.28,95.49,44.52L95.49,44.52L95.49,44.52z M92.31,44.52c0,7.9-2.77,14.64-8.36,20.23 c-5.57,5.56-12.31,8.36-20.21,8.36c-7.85,0-14.58-2.8-20.16-8.36c-5.57-5.59-8.36-12.33-8.36-20.23c0-7.85,2.79-14.58,8.36-20.14 c5.59-5.56,12.31-8.36,20.16-8.36c7.9,0,14.65,2.8,20.21,8.36C89.54,29.94,92.31,36.67,92.31,44.52L92.31,44.52z"/></g></svg>
+						<h4>Quality Food</h4>
+						<p>there is some text here there is some text here there is some text here</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-sm-6 col-12 mx-auto">
+					<?xml version="1.0" encoding="utf-8"?><svg class="svg1" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 98.89" style="enable-background:new 0 0 122.88 98.89" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M1.72,92h119.43c0.94,0,1.72,0.79,1.72,1.72v3.44c0,0.93-0.78,1.72-1.72,1.72H1.72C0.78,98.89,0,98.12,0,97.17 v-3.44C0,92.78,0.78,92,1.72,92L1.72,92z M66.4,19.73c31.57,2.52,56.4,25.25,56.4,57.47c0,2.62-0.17,5.19-0.48,7.72l-121.75,0 c-0.32-2.56-0.48-5.14-0.48-7.73c0-32.37,25.06-55.19,56.83-57.5V9.92l-9.68,0c-0.98,0-1.78-0.8-1.78-1.78V1.78 c0-0.98,0.8-1.78,1.78-1.78h28.7c0.98,0,1.78,0.8,1.78,1.78v6.37c0,0.98-0.8,1.78-1.78,1.78H66.4L66.4,19.73L66.4,19.73L66.4,19.73 z"/></g></svg>
+					<div class="inside">
+						<?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 89.2" style="enable-background:new 0 0 122.88 89.2" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M122.88,21.37c0.05,2.89-0.53,11.16-1.68,24.86h-1.78V89.2l-6,0V46.23h-0.99V0c2.02,0.31,3.76,1.23,5.15,2.75 C121.07,6.31,122.83,12.53,122.88,21.37L122.88,21.37z M107.27,44.52c0,12.04-4.24,22.33-12.72,30.81 c-8.5,8.5-18.77,12.74-30.81,12.74c-12,0-22.26-4.24-30.78-12.74c-8.5-8.48-12.77-18.77-12.77-30.81c0-12,4.26-22.24,12.77-30.76 c8.53-8.5,18.79-12.77,30.78-12.77c12.04,0,22.31,4.26,30.81,12.77C103.03,22.28,107.27,32.52,107.27,44.52L107.27,44.52 L107.27,44.52z M20.69,23.22c0,2.96-1.23,5.4-3.69,7.3c-2.43,1.9-3.66,3.57-3.66,4.96V89.2h-6V35.48c0-1.4-1.23-3.06-3.66-4.96 C1.23,28.62,0,26.19,0,23.22C0,15.18,1.78,7.42,5.37,0v19.9h3.18V0h3.52v19.9h3.25V0C18.89,7.42,20.69,15.18,20.69,23.22 L20.69,23.22z M95.49,44.52c0-8.74-3.08-16.21-9.27-22.4c-6.19-6.19-13.68-9.27-22.48-9.27c-8.77,0-16.24,3.08-22.4,9.27 c-6.19,6.19-9.3,13.66-9.3,22.4c0,8.76,3.11,16.23,9.3,22.45c6.16,6.21,13.63,9.32,22.4,9.32c8.79,0,16.28-3.11,22.48-9.32 C92.4,60.75,95.49,53.28,95.49,44.52L95.49,44.52L95.49,44.52z M92.31,44.52c0,7.9-2.77,14.64-8.36,20.23 c-5.57,5.56-12.31,8.36-20.21,8.36c-7.85,0-14.58-2.8-20.16-8.36c-5.57-5.59-8.36-12.33-8.36-20.23c0-7.85,2.79-14.58,8.36-20.14 c5.59-5.56,12.31-8.36,20.16-8.36c7.9,0,14.65,2.8,20.21,8.36C89.54,29.94,92.31,36.67,92.31,44.52L92.31,44.52z"/></g></svg>
+						<h4>Quality Food</h4>
+						<p>there is some text here there is some text here there is some text here</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-6 col-12 mx-auto">
+					<?xml version="1.0" encoding="utf-8"?><svg class="svg1" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 98.89" style="enable-background:new 0 0 122.88 98.89" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M1.72,92h119.43c0.94,0,1.72,0.79,1.72,1.72v3.44c0,0.93-0.78,1.72-1.72,1.72H1.72C0.78,98.89,0,98.12,0,97.17 v-3.44C0,92.78,0.78,92,1.72,92L1.72,92z M66.4,19.73c31.57,2.52,56.4,25.25,56.4,57.47c0,2.62-0.17,5.19-0.48,7.72l-121.75,0 c-0.32-2.56-0.48-5.14-0.48-7.73c0-32.37,25.06-55.19,56.83-57.5V9.92l-9.68,0c-0.98,0-1.78-0.8-1.78-1.78V1.78 c0-0.98,0.8-1.78,1.78-1.78h28.7c0.98,0,1.78,0.8,1.78,1.78v6.37c0,0.98-0.8,1.78-1.78,1.78H66.4L66.4,19.73L66.4,19.73L66.4,19.73 z"/></g></svg>
+					<div class="inside">
+						<?xml version="1.0" encoding="utf-8"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 89.2" style="enable-background:new 0 0 122.88 89.2" xml:space="preserve"><style type="text/css">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style><g><path class="st0" d="M122.88,21.37c0.05,2.89-0.53,11.16-1.68,24.86h-1.78V89.2l-6,0V46.23h-0.99V0c2.02,0.31,3.76,1.23,5.15,2.75 C121.07,6.31,122.83,12.53,122.88,21.37L122.88,21.37z M107.27,44.52c0,12.04-4.24,22.33-12.72,30.81 c-8.5,8.5-18.77,12.74-30.81,12.74c-12,0-22.26-4.24-30.78-12.74c-8.5-8.48-12.77-18.77-12.77-30.81c0-12,4.26-22.24,12.77-30.76 c8.53-8.5,18.79-12.77,30.78-12.77c12.04,0,22.31,4.26,30.81,12.77C103.03,22.28,107.27,32.52,107.27,44.52L107.27,44.52 L107.27,44.52z M20.69,23.22c0,2.96-1.23,5.4-3.69,7.3c-2.43,1.9-3.66,3.57-3.66,4.96V89.2h-6V35.48c0-1.4-1.23-3.06-3.66-4.96 C1.23,28.62,0,26.19,0,23.22C0,15.18,1.78,7.42,5.37,0v19.9h3.18V0h3.52v19.9h3.25V0C18.89,7.42,20.69,15.18,20.69,23.22 L20.69,23.22z M95.49,44.52c0-8.74-3.08-16.21-9.27-22.4c-6.19-6.19-13.68-9.27-22.48-9.27c-8.77,0-16.24,3.08-22.4,9.27 c-6.19,6.19-9.3,13.66-9.3,22.4c0,8.76,3.11,16.23,9.3,22.45c6.16,6.21,13.63,9.32,22.4,9.32c8.79,0,16.28-3.11,22.48-9.32 C92.4,60.75,95.49,53.28,95.49,44.52L95.49,44.52L95.49,44.52z M92.31,44.52c0,7.9-2.77,14.64-8.36,20.23 c-5.57,5.56-12.31,8.36-20.21,8.36c-7.85,0-14.58-2.8-20.16-8.36c-5.57-5.59-8.36-12.33-8.36-20.23c0-7.85,2.79-14.58,8.36-20.14 c5.59-5.56,12.31-8.36,20.16-8.36c7.9,0,14.65,2.8,20.21,8.36C89.54,29.94,92.31,36.67,92.31,44.52L92.31,44.52z"/></g></svg>
+						<h4>Quality Food</h4>
+						<p>there is some text here there is some text here there is some text here</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container img">
+			<div class="row py-5">
+				<div class="col-lg-3 col-md-4 col-6 mx-auto my-3 box">
+					<div class="box1">
+						<div class="grad"></div>
+						<img width="100%" src="images1/01.jpg">
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 mx-auto my-3 box">
+					<div class="box1">
+						<div class="grad"></div>
+						<img width="100%" src="images1/02.jpg">
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 mx-auto my-3 box">
+					<div class="box1">
+						<div class="grad"></div>
+						<img width="100%" src="images1/03.jpg">
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 mx-auto my-3 box">
+					<div class="box1">
+						<div class="grad"></div>
+						<img width="100%" src="images1/04.jpg">
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 mx-auto my-3 box">
+					<div class="box1">
+						<div class="grad"></div>
+						<img width="100%" src="images1/05.jpg">
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 mx-auto my-3 box">
+					<div class="box1">
+						<div class="grad"></div>
+						<img width="100%" src="images1/06.jpg">
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 mx-auto my-3 box">
+					<div class="box1">
+						<div class="grad"></div>
+						<img width="100%" src="images1/07.jpg">
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4 col-6 mx-auto my-3 box">
+					<div class="box1">
+						<div class="grad"></div>
+						<img width="100%" src="images1/08.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="travel">
+			<img class="car1" src="images1/car1.png">
+			<img class="car2" src="images1/car2.png">
+			<img class="car3" src="images1/car3.png">
+		</div>
+		<footer>
+			<p>there is some text here there is some text here there</p>
+		</footer>
+	</body>
+</html>
