@@ -8,13 +8,13 @@
 				position: fixed;
 			}
 			#img{
-				width: 10000px;
-				height: 5000px;
+				width: 20000px;
+				height: 10000px;
 				z-index: 2;
 			}
 			#img2{
-				width: 8000px;
-				height: 4000px;
+				width: 16000px;
+				height: 8000px;
 			}
 			#imglogo{
 				width: 200px;
@@ -22,12 +22,12 @@
 				z-index: 1;
 			}
 			#img3{
-				width: 6000px;
-				height: 3000px;
+				width: 12000px;
+				height: 6000px;
 			}
 			#img4{
-				width: 2000px;
-				height: 1000px;
+				width: 4000px;
+				height: 2000px;
 			}
 			body{
 				overflow: hidden;
@@ -56,52 +56,93 @@
 		body.style.height = h+'px';
 		body.style.backgroundColor = 'black';
 
-		img.style.left = w/2-5000+'px';
-		img.style.top = h/2-2500+'px';
+		img.style.left = w/2-10000+'px';
+		img.style.top = h/2-5000+'px';
 		
-		img2.style.left = w/2-4000+'px';
-		img2.style.top = h/2-2000+'px';
+		img2.style.left = w/2-8000+'px';
+		img2.style.top = h/2-4000+'px';
 
 		imglogo.style.left = w/2-100+'px';
 		imglogo.style.top = h/2-100+'px'
 		
-		img3.style.left = w/2-3000+'px';
-		img3.style.top = h/2-1500+'px';
+		img3.style.left = w/2-6000+'px';
+		img3.style.top = h/2-3000+'px';
 		
-		img4.style.left = w/2-1000+'px';
-		img4.style.top = h/2-500+'px';
+		img4.style.left = w/2-2000+'px';
+		img4.style.top = h/2-1000+'px';
+
+
+		var newx1 = parseInt(img.style.left);
+		var newy1 = parseInt(img.style.top);
+
+		var newx2 = parseInt(img2.style.left);
+		var newy2 = parseInt(img2.style.top);
+
+		var newx3 = parseInt(img3.style.left);
+		var newy3 = parseInt(img3.style.top);
+
+		var newx4 = parseInt(img4.style.left);
+		var newy4 = parseInt(img4.style.top);
 
 		function mouse(event){
 			let x = event.clientX-w/2;
 			let y = event.clientY-h/2;
 
 			img.style.transform = 'rotateY('+x/25*-1+'deg) rotateX('+y/14+'deg)';
-			var newx1 = parseInt(img.style.left);
-			var newy1 = parseInt(img.style.top);
-			img.style.left = newx1+(x/25/5*-1)+'px';
-			img.style.top = newy1+(y/14/5*-1)+'px';
+			img.style.left = newx1+(x/25/5*80)+'px';
+			img.style.top = newy1+(y/14/5*80)+'px';
 
 			img2.style.transform = 'rotateY('+x/35*-1+'deg) rotateX('+y/24+'deg)';
-			var newx2 = parseInt(img2.style.left);
-			var newy2 = parseInt(img2.style.top);
-			img2.style.left = newx2+(x/35/5*-1)+'px';
-			img2.style.top = newy2+(y/24/5*-1)+'px';
+			img2.style.left = newx2+(x/35/5*70)+'px';
+			img2.style.top = newy2+(y/24/5*70)+'px';
 
 			imglogo.style.transform = 'rotateY('+x/35*-1+'deg) rotateX('+y/24+'deg)';
 
 			img3.style.transform = 'rotateY('+x/45*-1+'deg) rotateX('+y/34+'deg)';
-			var newx3 = parseInt(img3.style.left);
-			var newy3 = parseInt(img3.style.top);
-			img3.style.left = newx3+(x/45/5*-1)+'px';
-			img3.style.top = newy3+(y/34/5*-1)+'px';
+			img3.style.left = newx3+(x/45/5*60)+'px';
+			img3.style.top = newy3+(y/34/5*60)+'px';
 
 			img4.style.transform = 'rotateY('+x/65*-1+'deg) rotateX('+y/54+'deg)';
-			var newx4 = parseInt(img4.style.left);
-			var newy4 = parseInt(img4.style.top);
-			img4.style.left = newx4+(x/65/10*-1)+'px';
-			img4.style.top = newy4+(y/54/10*-1)+'px';
+			img4.style.left = newx4+(x/65/5*50)+'px';
+			img4.style.top = newy4+(y/54/5*50)+'px';
 
 			console.log(x +', '+ y)
 		}
+
+		let x1 = 0.04;
+		let x2 = 0.03;
+		let x3 = 0.02;
+		let x4 = 0.01;
+		function rotate(){
+			setInterval(() => {
+				// img.style.transform = 'rotate('+x1+'deg)';
+				// img2.style.transform = 'rotate('+x2+'deg)';
+				// img3.style.transform = 'rotate('+x3+'deg)';
+				// img4.style.transform = 'rotate('+x4+'deg)';
+
+				img.style.rotate = x1+'deg';
+				img2.style.rotate = x2+'deg';
+				img3.style.rotate = x3+'deg';
+				img4.style.rotate = x4+'deg';
+
+				x1+=0.04;
+				if(x1>360){
+					x1 = 0.04;
+				}
+				x2-=0.03;
+				if(x2<-360){
+					x2 = 0.03;
+				}
+				x3+=0.02;
+				if(x3>360){
+					x3 = 0.02;
+				}
+				x4-=0.01;
+				if(x4<-360){
+					x4 = 0.01;
+				}
+			}, 1);
+		}
+		rotate();
 	</script>
 </html>
