@@ -19,9 +19,15 @@ def generate_index_file():
         .folder {
             cursor: pointer;
             margin: 5px 0;
+            box-shadow: 0 0 6px #9c7200;
+            padding: 9px 25px;
+            border-radius: 20px;
+            margin: 10px 0;
+            display: table;
         }
         .file {
-            margin-left: 20px;
+            padding: 9px 25px;
+            margin: 10px 0;
         }
     </style>
 </head>
