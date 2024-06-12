@@ -18,10 +18,15 @@ def generate_index_file():
         header {
             background-color: black;
             color: white;
+            display: flex;
+            justify-content: space-between;
         }
         header h1 {
             margin: 0;
             padding: 30px 80px;
+        }
+        header nav{
+            padding: 35px 80px;
         }
         ul {
             list-style-type: none;
@@ -67,7 +72,10 @@ def generate_index_file():
     </style>
 </head>
 <body>
-<header class="mb-5"><h1>Project Index</h1></header>
+<header class="mb-5">
+    <h1>Project Index</h1>
+    <nav><a href="https://github.com/HimanshuChandnani/webdev" target="_blank" class="btn btn-outline-light">Himanshu Github Page</a></nav>
+</header>
 <ul>
 ''')
 
@@ -91,7 +99,7 @@ def generate_index_file():
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
                 class_attr = 'html-file' if item.lower().endswith('.html') else ''
-                f.write(f'<li class="file"><a class="{class_attr}" href="{relative_path}">{item}</a></li>')
+                f.write(f'<li class="file"><a class="{class_attr}" target="_blank" href="{relative_path}">{item}</a></li>')
             
             f.write('</ul>')
 
@@ -113,6 +121,11 @@ def generate_index_file():
     }
     document.querySelectorAll('.folder ul').forEach(function(ul) {
         ul.style.display = 'none';
+    });
+    document.querySelectorAll('.file a').forEach(function(anchor) {
+        anchor.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
     });
 </script>
 </body>
