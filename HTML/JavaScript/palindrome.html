@@ -15,8 +15,9 @@
     <script>
         function check(){
             let inp = document.getElementById('inp').value;
-            let arr1 = inp.split('');
-            let arr2 = inp.split('');
+            let arr1 = inp.split(' ').join('').split('');
+            let arr2 = inp.split(' ').join('').split('');
+            console.log(arr1+arr2)
             let p = document.getElementById('result');
             arr2.reverse();
             if(JSON.stringify(arr1)==JSON.stringify(arr2)){

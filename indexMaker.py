@@ -1,9 +1,17 @@
 import os
+import time
 
 def generate_index_file():
     script_dir = os.path.abspath(os.path.dirname(__file__))
     output_file = os.path.join(script_dir, 'index.html')
-    
+
+    # Define the time frame for considering files/folders as recent (in seconds)
+    recent_time_frame = 1 * 24 * 60 * 60  # 1 day
+    current_time = time.time()
+
+    def is_recent(path):
+        return (current_time - os.path.getmtime(path)) < recent_time_frame
+
     with open(output_file, 'w') as f:
         f.write('''<!DOCTYPE html>
 <html>
@@ -18,18 +26,21 @@ def generate_index_file():
         header {
             background-color: black;
             color: white;
-            display: flex;
-            justify-content: space-between;
-        }
-        header h1 {
-            margin: 0;
-            padding: 30px 80px;
-        }
-        header nav{
-            padding: 35px 80px;
+            div{
+                display: flex;
+                justify-content: space-between;
+            }
+            h1{
+                margin: 0;
+                padding: 30px 0;
+            }
+            nav{
+                padding: 35px 0;
+            }
         }
         ul {
             list-style-type: none;
+            padding-left: 0;
         }
         a {
             text-decoration: none !important;
@@ -39,16 +50,17 @@ def generate_index_file():
         a:hover {
             color: #9f9f9f;
         }
+        .folder, .file {
+            position: relative;
+        }
         .folder {
             cursor: pointer;
             box-shadow: 0 0 6px #cb9400;
             padding: 15px 25px;
             border-radius: 20px;
             margin: 20px 0;
-            display: table;
             font-weight: bold;
             color: #f3b100;
-            position: relative;
         }
         .folder::before {
             content: ">";
@@ -60,7 +72,7 @@ def generate_index_file():
             transform: rotate(90deg);
         }
         .file {
-            padding: 9px 25px;
+            padding: 15px 25px;
             margin: 10px 0;
         }
         .html-file {
@@ -69,14 +81,29 @@ def generate_index_file():
         .html-file:hover {
             color: #002486;
         }
+        .recent::after {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            left: -15px;
+            top: 27px;
+            transform: translateY(-50%);
+            cursor: default;
+        }
     </style>
 </head>
 <body>
 <header class="mb-5">
+    <div class="container">
     <h1>Project Index</h1>
     <nav><a href="https://github.com/HimanshuChandnani/webdev" target="_blank" class="btn btn-outline-light">Himanshu Github Page</a></nav>
+    </div>
 </header>
-<ul>
+<section class="container"><ul>
 ''')
 
         def write_directory(path, base_path, f):
@@ -90,7 +117,8 @@ def generate_index_file():
             for item in directories:
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
-                f.write(f'<li class="folder" onclick="toggleFolder(event, this)">{item}')
+                recent_class = ' recent' if is_recent(item_path) else ''
+                f.write(f'<li class="folder{recent_class}" onclick="toggleFolder(event, this)">{item}')
                 write_directory(item_path, base_path, f)
                 f.write('</li>')
 
@@ -98,15 +126,16 @@ def generate_index_file():
             for item in files:
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
+                recent_class = ' recent' if is_recent(item_path) else ''
                 class_attr = 'html-file' if item.lower().endswith('.html') else ''
-                f.write(f'<li class="file"><a class="{class_attr}" target="_blank" href="{relative_path}">{item}</a></li>')
+                f.write(f'<li class="file{recent_class}"><a class="{class_attr}" target="_blank" href="{relative_path}">{item}</a></li>')
             
             f.write('</ul>')
 
         write_directory(script_dir, script_dir, f)
 
         f.write('''
-</ul>
+</ul></section>
 <script>
     function toggleFolder(event, folder) {
         event.stopPropagation();
