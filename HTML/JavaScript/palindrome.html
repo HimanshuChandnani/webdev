@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<input id="inp" type="text">
+        <button onclick="check()">Check</button>
+        <p id="result"></p>
+	</body>
+    <script>
+        function check(){
+            let inp = document.getElementById('inp').value;
+            let arr1 = inp.split('');
+            let arr2 = inp.split('');
+            let p = document.getElementById('result');
+            arr2.reverse();
+            if(JSON.stringify(arr1)==JSON.stringify(arr2)){
+                p.innerHTML = 'This is a Pelindrome';
+            }
+            else{
+                p.innerHTML = 'this is not a Pelindrome';
+            }
+        }
+    </script>
+</html>
