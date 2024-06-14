@@ -122,7 +122,7 @@ def generate_index_file():
     <nav><a href="https://github.com/HimanshuChandnani/webdev" target="_blank" class="btn btn-outline-light">Himanshu Github Page</a></nav>
     </div>
 </header>
-<section class="container"><ul>
+<section class="container"><ul class ="col-12">
 ''')
 
         def write_directory(path, base_path, f, indent_level=1):
