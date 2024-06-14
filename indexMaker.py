@@ -129,25 +129,33 @@ def generate_index_file():
             directories = [item for item in items if os.path.isdir(os.path.join(path, item)) and not item.startswith('.')]
             files = [item for item in items if os.path.isfile(os.path.join(path, item)) and not item.startswith('.')]
             
+            directory_recent = False
+            
             for item in directories:
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
-                recent_class = ' recent' if is_recent(item_path) else ''
-                write_indented_line(f, f'<li class="folder{recent_class}" onclick="toggleFolder(event, this)">{item}', indent_level)
+                write_indented_line(f, f'<li class="folder" onclick="toggleFolder(event, this)">{item}', indent_level)
                 write_indented_line(f, '<ul>', indent_level + 1)
-                write_directory(item_path, base_path, f, indent_level + 2)
+                sub_directory_recent = write_directory(item_path, base_path, f, indent_level + 2)
                 write_indented_line(f, '</ul>', indent_level + 1)
                 write_indented_line(f, '</li>', indent_level)
+                
+                if sub_directory_recent:
+                    directory_recent = True
 
             for item in files:
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
                 recent_class = ' recent' if is_recent(item_path) else ''
+                if recent_class:
+                    directory_recent = True
                 class_attr = 'html-file' if item.lower().endswith('.html') else ''
                 write_indented_line(f, f'<li class="file{recent_class}"><a class="{class_attr}" target="_blank" href="{relative_path}">{item}</a></li>', indent_level)
 
-        write_directory(script_dir, script_dir, f, 1)
+            return directory_recent
 
+        directory_recent = write_directory(script_dir, script_dir, f, 1)
+        
         f.write('''
 </ul></section>
 <script>
