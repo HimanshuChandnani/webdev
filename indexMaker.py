@@ -16,6 +16,7 @@ def generate_index_file():
             timestamp = subprocess.check_output(['git', 'log', '-1', '--format=%ct', path], cwd=script_dir)
             return int(timestamp.strip())
         except subprocess.CalledProcessError:
+            print(f"Failed to get last commit time for {path}")
             return 0
 
     def is_recent(path):
