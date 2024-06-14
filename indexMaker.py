@@ -34,7 +34,8 @@ def generate_index_file():
         f.write('''<!DOCTYPE html>
 <html>
 <head>
-    <title>File Index</title>
+    <title>File Explorer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="HTML/bootstrap.4.6.2.css">
     <style>
         body {
