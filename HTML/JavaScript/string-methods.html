@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+	</body>
+    <script>
+        //substring
+        let str = 'Hello world, how are you   ';
+        let substr = str.substring(0,4);
+        document.write(substr);
+        document.write('<br>');
+        //string to array
+        let strArr = str.split('');
+        document.write(strArr);
+        document.write('<br>');
+        //find and replace
+        let newStr = str.replace('how', 'who');
+        document.write(newStr);
+        document.write('<br>');
+        //remove white space
+        let trimStr = str.trim();
+        document.write(trimStr);
+        document.write('<br>');
+        //index of substring
+        let index = str.indexOf('world');
+        document.write(index);
+        document.write('<br>');
+        //string's case
+        document.write(str.toUpperCase());
+        document.write('<br>');
+        document.write(str.toLowerCase());
+        document.write('<br>');
+    </script>
+</html>

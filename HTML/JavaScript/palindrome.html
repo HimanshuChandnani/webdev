@@ -20,11 +20,12 @@
             console.log(arr1+arr2)
             let p = document.getElementById('result');
             arr2.reverse();
+            p.innerHTML = 'arr1: '+ arr1 + '<br>arr2: ' + arr2 + '<br>';
             if(JSON.stringify(arr1)==JSON.stringify(arr2)){
-                p.innerHTML = 'This is a Pelindrome';
+                p.innerHTML = p.innerHTML +'This is a Pelindrome';
             }
             else{
-                p.innerHTML = 'this is not a Pelindrome';
+                p.innerHTML = p.innerHTML +'this is not a Pelindrome';
             }
         }
     </script>
