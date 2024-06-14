@@ -79,10 +79,10 @@ def generate_index_file():
             border-radius: 20px;
             margin: 20px 0;
             font-weight: bold;
-            color: #f3b100;
+            color: #fffbe2;
         }
         .folder:hover, .open{
-            background-color: #fffadb73;        
+            background-color: white !important;        
         }
         .folder::before {
             content: ">";
