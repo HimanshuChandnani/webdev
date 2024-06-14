@@ -81,6 +81,9 @@ def generate_index_file():
             font-weight: bold;
             color: #f3b100;
         }
+        .folder:hover, .open{
+            background-color: #fffadb73;        
+        }
         .folder::before {
             content: ">";
             position: absolute;
