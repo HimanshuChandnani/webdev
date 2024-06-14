@@ -1,4 +1,5 @@
 import os
+import subprocess
 import time
 
 def generate_index_file():
@@ -9,8 +10,21 @@ def generate_index_file():
     recent_time_frame = 1 * 24 * 60 * 60  # 1 day
     current_time = time.time()
 
+    def get_git_last_commit_time(path):
+        try:
+            # Get the last commit timestamp for the given path
+            timestamp = subprocess.check_output(['git', 'log', '-1', '--format=%ct', path], cwd=script_dir)
+            return int(timestamp.strip())
+        except subprocess.CalledProcessError:
+            return 0
+
     def is_recent(path):
-        return (current_time - os.path.getmtime(path)) < recent_time_frame
+        last_commit_time = get_git_last_commit_time(path)
+        return (current_time - last_commit_time) < recent_time_frame
+
+    def write_indented_line(file, line, indent_level=0):
+        indent = ' ' * 4 * indent_level
+        file.write(f"{indent}{line}\n")
 
     with open(output_file, 'w') as f:
         f.write('''<!DOCTYPE html>
@@ -26,15 +40,15 @@ def generate_index_file():
         header {
             background-color: black;
             color: white;
-            div{
+            div {
                 display: flex;
                 justify-content: space-between;
             }
-            h1{
+            h1 {
                 margin: 0;
                 padding: 30px 0;
             }
-            nav{
+            nav {
                 padding: 35px 0;
             }
         }
@@ -106,33 +120,29 @@ def generate_index_file():
 <section class="container"><ul>
 ''')
 
-        def write_directory(path, base_path, f):
-            f.write('<ul>')
+        def write_directory(path, base_path, f, indent_level=1):
             items = sorted(os.listdir(path))
-            # Separate directories and files
             directories = [item for item in items if os.path.isdir(os.path.join(path, item)) and not item.startswith('.')]
             files = [item for item in items if os.path.isfile(os.path.join(path, item)) and not item.startswith('.')]
             
-            # Write directories first
             for item in directories:
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
                 recent_class = ' recent' if is_recent(item_path) else ''
-                f.write(f'<li class="folder{recent_class}" onclick="toggleFolder(event, this)">{item}')
-                write_directory(item_path, base_path, f)
-                f.write('</li>')
+                write_indented_line(f, f'<li class="folder{recent_class}" onclick="toggleFolder(event, this)">{item}', indent_level)
+                write_indented_line(f, '<ul>', indent_level + 1)
+                write_directory(item_path, base_path, f, indent_level + 2)
+                write_indented_line(f, '</ul>', indent_level + 1)
+                write_indented_line(f, '</li>', indent_level)
 
-            # Write files afterwards
             for item in files:
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
                 recent_class = ' recent' if is_recent(item_path) else ''
                 class_attr = 'html-file' if item.lower().endswith('.html') else ''
-                f.write(f'<li class="file{recent_class}"><a class="{class_attr}" target="_blank" href="{relative_path}">{item}</a></li>')
-            
-            f.write('</ul>')
+                write_indented_line(f, f'<li class="file{recent_class}"><a class="{class_attr}" target="_blank" href="{relative_path}">{item}</a></li>', indent_level)
 
-        write_directory(script_dir, script_dir, f)
+        write_directory(script_dir, script_dir, f, 1)
 
         f.write('''
 </ul></section>
