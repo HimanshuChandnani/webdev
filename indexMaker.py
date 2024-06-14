@@ -10,6 +10,8 @@ def generate_index_file():
     recent_time_frame = 1 * 24 * 60 * 60  # 1 day
     current_time = time.time()
 
+    print(f"Current time: {current_time}")
+
     def get_git_last_commit_time(path):
         try:
             # Get the last commit timestamp for the given path
@@ -21,6 +23,7 @@ def generate_index_file():
 
     def is_recent(path):
         last_commit_time = get_git_last_commit_time(path)
+        print(f"Path: {path}, Last commit time: {last_commit_time}, Recent: {(current_time - last_commit_time) < recent_time_frame}")
         return (current_time - last_commit_time) < recent_time_frame
 
     def write_indented_line(file, line, indent_level=0):
