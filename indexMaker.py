@@ -134,10 +134,9 @@ def generate_index_file():
             for item in directories:
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
-                sub_directory_recent = write_directory(item_path, base_path, f, indent_level + 2)
-                recent_class = ' recent' if sub_directory_recent else ''
-                write_indented_line(f, f'<li class="folder{recent_class}" onclick="toggleFolder(event, this)">{item}', indent_level)
+                write_indented_line(f, f'<li class="folder" onclick="toggleFolder(event, this)">{item}', indent_level)
                 write_indented_line(f, '<ul>', indent_level + 1)
+                sub_directory_recent = write_directory(item_path, base_path, f, indent_level + 2)
                 write_indented_line(f, '</ul>', indent_level + 1)
                 write_indented_line(f, '</li>', indent_level)
                 
