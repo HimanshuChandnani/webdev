@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<button onclick="start()">Start</button>
+        <button onclick="stop()">Stop</button>
+		<p id="print"></p>
+	</body>
+	<script>
+		let interval, num = 0;
+		let p = document.getElementById('print');
+		function start(){
+			interval = setInterval(() => {
+				num++;
+				p.innerHTML = p.innerHTML + num + '<br>';
+				if(num>=100){
+					clearInterval(interval);
+				}
+			}, 200);
+		}
+		function stop(){
+			clearInterval(interval);
+		}
+	</script>
+</html>

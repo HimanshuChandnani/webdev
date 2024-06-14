@@ -14,9 +14,9 @@
 	</body>
     <script>
         function check(){
-            let inp = document.getElementById('inp').value;
-            let arr1 = inp.split(' ').join('').split('');
-            let arr2 = inp.split(' ').join('').split('');
+            let inp = document.getElementById('inp').value.toLowerCase();
+            let arr1 = inp.split(' ').join('').split(',').join('').split('-').join('').split('.').join('').split('');
+            let arr2 = inp.split(' ').join('').split(',').join('').split('-').join('').split('.').join('').split('');
             console.log(arr1+arr2)
             let p = document.getElementById('result');
             arr2.reverse();

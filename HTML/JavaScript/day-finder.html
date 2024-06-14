@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<!-- <input id="d" type="number" placeholder="date">
+		<input id="m" type="number" placeholder="month">
+		<input id="y" type="number" placeholder="year"> -->
+        <input id="dat" type="date">
+        <button onclick="find()">Find the day</button>
+        <p id="day"></p>
+	</body>
+    <script>
+        function find(){
+            let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            // let d = document.getElementById('d').value;
+            // let m = document.getElementById('m').value;
+            // let y = document.getElementById('y').value;
+            let dat = document.getElementById('dat').value;
+            let datarr = dat.split('-');
+            console.log(datarr);
+            let date = new Date();
+            date.setFullYear(parseInt(datarr[0]),parseInt(datarr[1])-1,parseInt(datarr[2]));
+            console.log(date);
+            document.getElementById('day').innerHTML = days[date.getDay()];
+        }
+    </script>
+</html>
