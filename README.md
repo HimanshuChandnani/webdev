@@ -4,7 +4,7 @@
 This repository contains all my web development things that i have ever learned and made.
 
 ### [Link to the website](https://himanshuchandnani.github.io/webdev/)
-### <a href="https://himanshuchandnani.github.io/webdev/">Link to the website</a>
+### <a target="_blank" href="https://himanshuchandnani.github.io/webdev/">Link to the website</a>
 ## Features on the main website
 
 - Folder design for accessing all my files
