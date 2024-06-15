@@ -11,6 +11,6 @@ function active(elem){
     if(document.location.hash){
         setTimeout(function() {
             window.scrollTo(window.scrollX, window.scrollY - 69.4);
-        }, 500);
+        }, 30);
     }
 }
