@@ -1,9 +1,9 @@
 :root{
 	--green:#1ddca9;
 }
-html {
+/* html {
 	scroll-behavior: smooth;
-  }
+  } */
 h1, h2, h3, h5{
 	font-weight: bold;
 }
