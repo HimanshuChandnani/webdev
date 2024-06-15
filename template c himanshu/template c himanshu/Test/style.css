@@ -8,7 +8,7 @@ h1, h2, h3, h5{
 	font-weight: bold;
 }
 header{
-	background-image:url('images/hero-area.jpg');
+	background-image:url('Images/hero-area.jpg');
 	background-size:cover;
 	background-position:center;
 	.nav-link{
@@ -44,7 +44,7 @@ header{
 	margin-bottom:30px;
 }
 .features{
-	background-image:url('images/bg1.jpg');
+	background-image:url('Images/bg1.jpg');
 	background-size:cover;
 	background-position:center;
 	overflow: hidden;
