@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			canvas{
+                border: 1px solid;
+            }
+		</style>
+	</head>
+	<body>
+		<canvas onmousemove="pos(event)" onmousedown="start()" onmouseup="stop()" id="canvas" width="1000" height="600"></canvas>
+	</body>
+	<script>
+		let c = document.getElementById('canvas');
+        ctx = c.getContext('2d');
+
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = '5'
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(20,350,150,100);
+        ctx.strokeRect(200,350,150,100);
+
+        ctx.beginPath();
+        ctx.moveTo(400,350);
+        ctx.lineTo(500,350);
+        ctx.lineTo(500,500);
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.lineTo(500,300);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(500,0);
+        ctx.lineTo(0,300);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(250,150,150,0,2*Math.PI);
+        ctx.fill();
+        
+        for(i=1;i<=150;i+=10){
+            ctx.beginPath();
+            ctx.arc(700,150,i,0,2*Math.PI);
+            ctx.stroke();
+        }
+        // for(i=1;i<=200;i+=5){
+        //     ctx.beginPath();
+        //     ctx.arc(150,150,i,0,2*Math.PI);
+        //     ctx.stroke();
+        // }
+        let x;
+        let y;
+        let click = true;
+        let running = false;
+        let int;
+        function pos(event){
+            x = event.clientX;
+            y = event.clientY;
+        }
+        function start(){
+            if(!running){
+                running = true;
+                ctx.beginPath();
+                int = setInterval(() => {
+                    console.log(x+' ',y)
+                    ctx.lineTo(x,y);
+                    ctx.stroke();
+                }, 1);
+            }
+        }
+        function stop(){
+            clearInterval(int);
+            running = false;
+        }
+	</script>
+</html>

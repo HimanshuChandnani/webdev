@@ -103,7 +103,7 @@
 	<body>
 		<div class="outgame">
             <h4 id="turn"> Turn: Player 1</h4>
-            <button class="btn btn-dark btn-lg float-right" onclick="reset()">Reset</button>
+            <button class="btn btn-dark btn-lg" style="position: absolute; right: 0;" onclick="reset()">Reset</button>
             <div id="points"></div>
             <div id="game">
                 <div id="board"></div>
@@ -202,7 +202,8 @@
             colors();
             click();
             let popup = document.getElementById('popup');
-            popup.style.transform = 'scale(1)'
+            popup.style.transform = 'scale(1)';
+            popup2.style.transform = 'scale(0)';
         }
 
         function player(){
@@ -262,24 +263,24 @@
                 elem.style.backgroundColor = players[chance];
                 elem.style.cursor = 'default';
                 boxCheck(players[chance]);
-                if(bool == false){
-                    player();
-                }
-                else{
-                    pointNum[chance].innerHTML = parseInt(pointNum[chance].innerHTML) + 1;
-                }
-                bool = false;
             }
         }
         let inc = 0;
         function boxCheck(color){
+            let pointNum = document.getElementsByClassName('pointNumber');
+            let bool = true;
             for(i = 0; i < box.length; i++){
                 if(i % parseInt(w) == 0 && i != 0){
                     inc++;
                 }
                 if(vertline[i + inc].style.backgroundColor != '' && vertline[i + 1 + inc].style.backgroundColor != '' &&horline[i].style.backgroundColor != '' && horline[i + parseInt(w)].style.backgroundColor != '' && box[i].style.backgroundColor == ''){
                     box[i].style.backgroundColor = color;
-                    bool = true;
+                    pointNum[chance].innerHTML = parseInt(pointNum[chance].innerHTML) + 1;
+                    bool = false;
+                }
+                else if(bool&&i==box.length-1){
+                    player();
+                    console.count();
                 }
             }
             inc = 0;
