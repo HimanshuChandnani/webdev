@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<input id="w1" type="text" placeholder="1st word">
+		<input id="w2" type="text" placeholder="2nd word">
+        <button onclick="anagram()" class="btn btn-dark">Check</button>
+        <p id="result"></p>
+	</body>
+	<script>
+        function anagram(){
+            let w1 = document.getElementById('w1').value.toLowerCase().split('').sort().join('');
+            let w2 = document.getElementById('w2').value.toLowerCase().split('').sort().join('');
+            let result = document.getElementById('result')
+            if(w1==w2){
+                result.innerHTML = 'It is Anagram';
+            }
+            else{
+                result.innerHTML = 'It is not Anagram';
+            }
+        }
+	</script>
+</html>

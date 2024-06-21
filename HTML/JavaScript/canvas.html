@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			canvas{
+                border: 1px solid;
+            }
+		</style>
+	</head>
+	<body>
+		<canvas onmousemove="pos(event)" onmousedown="click()" id="canvas" width="500" height="300"></canvas>
+	</body>
+	<script>
+		let c = document.getElementById('canvas');
+        ctx = c.getContext('2d');
+        // ctx.moveTo(0,0);
+        // ctx.lineTo(500,300);
+        // ctx.stroke();
+
+        // ctx.moveTo(500,0);
+        // ctx.lineTo(0,300);
+        // ctx.stroke();
+
+        // ctx.beginPath();
+        // ctx.arc(250,150,150,0,2*Math.PI);
+        // ctx.stroke();
+        
+        // for(i=1;i<=200;i+=5){
+        //     ctx.beginPath();
+        //     ctx.arc(350,150,i,0,2*Math.PI);
+        //     ctx.stroke();
+        // }
+        // for(i=1;i<=200;i+=5){
+        //     ctx.beginPath();
+        //     ctx.arc(150,150,i,0,2*Math.PI);
+        //     ctx.stroke();
+        // }
+        let x;
+        let y;
+        click = true;
+        function pos(event){
+            x = event.clientX;
+            y = event.clientY;
+            console.log(x+' ',y)
+            if(click){
+                ctx.lineTo(x,y);
+                ctx.stroke();
+            }
+        }
+        function click(){
+            click = true;
+            document.alert('')
+        }
+        console.trace();
+	</script>
+</html>
