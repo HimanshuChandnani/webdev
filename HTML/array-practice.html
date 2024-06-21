@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+	</body>
+    <script>
+        // 1. concatinate
+        let arr1 = [1,2,3,4,5];
+        let arr2 = ['so','mo','ho'];
+        let arr3 = [10,20,30,40,50];
+        let concat = arr1.concat(arr2,arr3);
+        document.write(concat + '<br>');
+
+        // 2. flat
+        let arr = ['text',['hello','oh','no'],'uh',['wow','hmm']];
+        let flat = arr.flat();
+        console.log(arr);
+        console.log(flat);
+
+        // 3. length
+        let array = ['name 1','name 2','name3','name 4','name 5'];
+        if(array.length < 6){
+            array.push('new name');
+        }
+        else if(array.length > 6){
+            array.pop();
+        }
+        document.write(array+'<br>');
+
+        // 4. index of repeated name
+        let arrr = ['Himanshu','Ajay','Chitransh','Himanshu','Jay','Azhar','Himanshu'];
+        let posStart = arrr.indexOf('Himanshu');
+        let posLast = arrr.lastIndexOf('Himanshu');
+        document.write("Himanshu's first index is "+posStart+" Himanshu's Last index is "+posLast);
+    </script>
+</html>

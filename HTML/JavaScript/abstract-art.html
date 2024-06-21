@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			.main{
+				width: 50%;
+				position: relative;
+				overflow: hidden;
+				margin: auto;
+				margin-top: 100px;
+			}
+			img{
+				width: 100%;
+			}
+			#div{
+				display: flex;
+				width: 100%;
+				flex-wrap: wrap;
+				position: absolute;
+				background-color: black;
+				mix-blend-mode: darken;
+				div{
+					padding: 22px;
+					background-color: white;
+					border-radius: 20px;
+					margin: auto;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div id="div"></div>
+			<img id="image" src="images/274027347_486151519817351_4906156009213428988_n.jpg">
+		</div>
+	</body>
+	<script>
+		let div = document.getElementById('div');
+		for(i=0;i<1000;i++){
+			div.innerHTML += '<div></div>'
+		}
+	</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<p id="name">Azhar Himanshu</p>
+	</body>
+    <script>
+        let names = document.getElementById('name').innerHTML;
+        let nameArr = names.split(' ');
+        nameArr.push('Jay');
+        nameArr.push('Chitransh');
+        nameArr.push('Ajay');
+        nameArr.push('Kavya');
+        nameArr.push('Hitesh');
+        nameArr.push('Ashish');
+        let slice = nameArr.slice(1,-1);
+        let join = slice.join(', ')
+        document.getElementById('name').innerHTML = join;
+    </script>
+</html>
