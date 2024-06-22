@@ -22,69 +22,126 @@
 		let c = document.getElementById('canvas');
         ctx = c.getContext('2d');
 
-        let w = window.innerWidth-3;
-        let h = window.innerHeight-3;
+        let w = window.innerWidth - 3;
+        let h = window.innerHeight - 3;
         c.width = w;
         c.height = h;
         ctx.lineWidth = '5';
 
-        // for(i=0;i<5000;i++){
-        //     ctx.beginPath();
-        //     ctx.arc(Math.random() * w,Math.random() * h,6,0,2*Math.PI);
-        //     ctx.strokeStyle = 'rgba('+Math.random() * 225+','+Math.random() * 225+','+Math.random() * 225+','+Math.random() * 100/100+')'
-        //     ctx.stroke();
-        // }
+        function Circle(x, y, vx, vy, r, rs, color){
+            this.x = x;
+            this.y = y;
+            this.vx = vx;
+            this.vy = vy;
+            this.r = r;
+            this.rs = rs;
+            this.color = color;
 
-        let x = 200;
-        let y = 200;
-        let vx = 5;
-        let vy = 5;
-        let r = 50;
+            this.draw = function(){
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.fillStyle = color;
+                ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+                // ctx.stroke();
+                ctx.fill();
+            }
+
+            this.update = function(){
+                this.draw();
+                if(this.x + this.r > w || this.x - this.r < 0){
+                    this.vx = -this.vx;
+                }
+                if(this.y + this.r > h || this.y - this.r < 0){
+                    this.vy = -this.vy;
+                }
+                if(this.r > 50 || this.r <= 0){
+                    this.rs = -this.rs;
+                }
+                this.r += this.rs;
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if(this.r < 0){
+                    this.r = 0;
+                }
+            }
+        }
+
+        function CircleTemp(x, y, vx, vy, r, rs, color){
+            this.x = x;
+            this.y = y;
+            this.vx = vx;
+            this.vy = vy;
+            this.r = r;
+            this.rs = rs;
+            this.color = color;
+
+            this.draw = function(){
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.fillStyle = color;
+                ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+                // ctx.stroke();
+                ctx.fill();
+            }
+
+            this.update = function(){
+                this.draw();
+                if(this.x + this.r > w || this.x - this.r < 0){
+                    this.vx = -this.vx;
+                }
+                if(this.y + this.r > h || this.y - this.r < 0){
+                    this.vy = -this.vy;
+                }
+                if(this.r > 20 || this.r <= 0){
+                    this.rs = -this.rs;
+                }
+                this.r += this.rs;
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if(this.r < 0){
+                    this.r = 0;
+                    this.rs = 0;
+                }
+            }
+        }
+
+        let circleArr = [];
+        for(i = 0; i < 50; i++){
+            let r = Math.random() * 50;
+            let rs = Math.random() / 10;
+            let x = Math.random() * (w - r * 2) + r;
+            let y = Math.random() * (h - r * 2) + r;
+            let vx = (Math.random() - 0.5) ;
+            let vy = (Math.random() - 0.5) ;
+            let color = 'rgba(' + Math.random() * 225 + ',' + Math.random() * 225 + ','+Math.random() * 225 + ','+Math.random() * 100/100 + ')';
+            circleArr[i] = new Circle(x, y, vx, vy, r, rs, color);
+        }
+        function mouseAdd(){
+            let posX = event.clientX;
+            let posY = event.clientY;
+            // console.log(posX + ' ' + posY)
+            let r = Math.random() * 20;
+            let rs = Math.random() + 0.1;
+            let x = posX;
+            let y = posY;
+            let vx = (Math.random() - 0.5) * 5;
+            let vy = (Math.random() - 0.5) * 5;
+            let color = 'rgba(' + Math.random() * 225 + ',' + Math.random() * 225 + ','+Math.random() * 225 + ','+Math.random() * 100/100 + ')';
+            circleArr.push(new CircleTemp(x, y, vx, vy, r, rs, color));
+        }
+        c.addEventListener('mousemove', mouseAdd)
 
         function animate(){
             requestAnimationFrame(animate);
-            ctx.clearRect(0,0,w,h);
-            ctx.beginPath();
-            ctx.arc(x,y,r,0,2*Math.PI);
-            ctx.stroke();
-            if(x+r>w||x-r<0){
-                vx = -vx;
+            ctx.clearRect(0, 0, w, h);
+
+            for(i = 0; i < circleArr.length; i++){
+                circleArr[i].update();
             }
-            if(y+r>h||y-r<0){
-                vy = -vy;
-            }
-            x+=vx;
-            y+=vy;
+            
         }
         animate();
-        
-        // let x;
-        // let y;
-        // let click = true;
-        // let running = false;
-        // let int;
-        // ctx.strokeStyle = 'black';
-        // function pos(event){
-        //     x = event.clientX;
-        //     y = event.clientY;
-        // }
-        // function start(){
-        //     if(!running){
-        //         running = true;
-        //         ctx.beginPath();
-        //         int = setInterval(() => {
-        //             console.log(x+' ',y)
-        //             ctx.lineTo(x,y);
-        //             ctx.stroke();
-        //         }, 1);
-        //     }
-        // }
-        // function stop(){
-        //     clearInterval(int);
-        //     running = false;
-        // }
-        // c.addEventListener('mousemove',pos);
-        // c.addEventListener('mousedown',start);
-        // c.addEventListener('mouseup',stop);
 	</script>
 </html>
