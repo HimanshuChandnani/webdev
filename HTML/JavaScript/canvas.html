@@ -127,7 +127,7 @@
         }
 
         let circleArr = [];
-        for(i = 0; i < 50; i++){
+        for(i = 0; i < 100; i++){
             let r = Math.random() * 50;
             let rs = Math.random() / 10;
             let x = Math.random() * (w - r * 2) + r;
@@ -142,10 +142,6 @@
         let posX;
         let posY;
         function mouseAdd(){
-            // let posX = event.clientX;
-            // let posY = event.clientY;
-            // console.log(event)
-            // console.log(posX + ' ' + posY)
             let r = Math.random() * 10;
             let rs = Math.random() + 0.1;
             let x = posX;
@@ -171,9 +167,6 @@
             }, 10);
         })
         // c.addEventListener('mousemove', mousePos)
-        // interval = setInterval(function(){
-        //     mouseAdd()
-        // }, 10);
         c.addEventListener('mouseout',() => {clearInterval(interval)});
 
         function animate(){

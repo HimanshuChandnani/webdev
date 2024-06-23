@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+            /* body::-webkit-scrollbar {
+                display: none;
+            } */
+            body{
+                overflow: hidden;
+            }
+			canvas{
+                border: 1px solid;
+            }
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+	<script>
+		let c = document.getElementById('canvas');
+        ctx = c.getContext('2d');
+
+        let w = window.innerWidth - 3;
+        let h = window.innerHeight - 3;
+        c.width = w;
+        c.height = h;
+        ctx.lineWidth = '5';
+        let pellate = [
+            '#049DD9',
+            '#05C7F2',
+            '#05DBF2',
+            '#F23005',
+            '#0D0D0D'
+        ];
+
+        function Circle(x, y, vx, vy, r, color){
+            this.x = x;
+            this.y = y;
+            this.vx = vx;
+            this.vy = vy;
+            this.r = r;
+            this.color = color;
+
+            this.draw = function(){
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.fillStyle = color;
+                ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
+                // ctx.stroke();
+                ctx.fill();
+            }
+
+            this.update = function(){
+                this.draw();
+                if(this.x + this.r > w || this.x - this.r < 0){
+                    this.vx = -this.vx;
+                }
+
+                if(this.y + this.r > h || this.y - this.r < 0){
+                    this.vy = -this.vy;
+                }
+                for(z = 0; z < 100; z++){
+                    if(this.r > 1 &&this.r < 50 && this.x > posX - 100 && this.x < posX + 100 && this.y > posY - 100 && this.y < posY + 100){
+                        this.r += 0.01;
+                    }
+                    else if(this.r > 10){
+                        this.r -= 0.01;
+                    }
+                }
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if(this.r < 0){
+                    this.r = 0;
+                }
+            }
+        }
+
+        
+
+        let circleArr = [];
+        for(i = 0; i < 1000; i++){
+            let r = 10;
+            let x = Math.random() * (w - r * 2) + r;
+            let y = Math.random() * (h - r * 2) + r;
+            let vx = (Math.random() - 0.5) ;
+            let vy = (Math.random() - 0.5) ;
+            // let color = 'rgba(' + Math.random() * 225 + ',' + Math.random() * 225 + ','+Math.random() * 225 + ','+Math.random() * 100/100 + ')';
+            let color = pellate[parseInt(Math.random() * pellate.length)];
+            circleArr[i] = new Circle(x, y, vx, vy, r, color);
+        }
+
+        let posX;
+        let posY;
+        
+        // c.addEventListener('mousemove', mouseAdd)
+        function mousePos(){
+            posX = event.x;
+            posY = event.y;
+        }
+
+        c.addEventListener('mousemove', mousePos)
+
+        function animate(){
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, w, h);
+
+            for(i = 0; i < circleArr.length; i++){
+                circleArr[i].update();
+            }
+        }
+        animate();
+	</script>
+</html>
