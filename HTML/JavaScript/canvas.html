@@ -27,6 +27,13 @@
         c.width = w;
         c.height = h;
         ctx.lineWidth = '5';
+        let pellate = [
+            '#049DD9',
+            '#05C7F2',
+            '#05DBF2',
+            '#F23005',
+            '#0D0D0D'
+        ];
 
         function Circle(x, y, vx, vy, r, rs, color){
             this.x = x;
@@ -48,9 +55,20 @@
 
             this.update = function(){
                 this.draw();
+                // for(z = 0; z < 50; z++){
+                //     if(circleArr[z] !== this){
+                //         if(this.x + this.r > circleArr[z].x - circleArr[z].r && this.x - this.r < circleArr[z].x + circleArr[z].r){
+                //             if(this.y + this.r > circleArr[z].y - circleArr[z].r && this.y - this.r < circleArr[z].y + circleArr[z].r){
+                //                 this.vx = -this.vx;
+                //                 this.vy = -this.vy;
+                //             }
+                //         }
+                //     }
+                // }
                 if(this.x + this.r > w || this.x - this.r < 0){
                     this.vx = -this.vx;
                 }
+
                 if(this.y + this.r > h || this.y - this.r < 0){
                     this.vy = -this.vy;
                 }
@@ -93,7 +111,8 @@
                 if(this.y + this.r > h || this.y - this.r < 0){
                     this.vy = -this.vy;
                 }
-                if(this.r > 20 || this.r <= 0){
+            
+                if(this.r > 10 || this.r <= 0){
                     this.rs = -this.rs;
                 }
                 this.r += this.rs;
@@ -115,23 +134,47 @@
             let y = Math.random() * (h - r * 2) + r;
             let vx = (Math.random() - 0.5) ;
             let vy = (Math.random() - 0.5) ;
-            let color = 'rgba(' + Math.random() * 225 + ',' + Math.random() * 225 + ','+Math.random() * 225 + ','+Math.random() * 100/100 + ')';
+            // let color = 'rgba(' + Math.random() * 225 + ',' + Math.random() * 225 + ','+Math.random() * 225 + ','+Math.random() * 100/100 + ')';
+            let color = pellate[parseInt(Math.random() * pellate.length)];
             circleArr[i] = new Circle(x, y, vx, vy, r, rs, color);
         }
+
+        let posX;
+        let posY;
         function mouseAdd(){
-            let posX = event.clientX;
-            let posY = event.clientY;
+            // let posX = event.clientX;
+            // let posY = event.clientY;
+            // console.log(event)
             // console.log(posX + ' ' + posY)
-            let r = Math.random() * 20;
+            let r = Math.random() * 10;
             let rs = Math.random() + 0.1;
             let x = posX;
             let y = posY;
             let vx = (Math.random() - 0.5) * 5;
             let vy = (Math.random() - 0.5) * 5;
-            let color = 'rgba(' + Math.random() * 225 + ',' + Math.random() * 225 + ','+Math.random() * 225 + ','+Math.random() * 100/100 + ')';
+            // let color = 'rgba(' + Math.random() * 225 + ',' + Math.random() * 225 + ','+Math.random() * 225 + ','+Math.random() * 100/100 + ')';
+            let color = pellate[parseInt(Math.random() * pellate.length)];
             circleArr.push(new CircleTemp(x, y, vx, vy, r, rs, color));
         }
-        c.addEventListener('mousemove', mouseAdd)
+
+        // c.addEventListener('mousemove', mouseAdd)
+        function mousePos(){
+            posX = event.x;
+            posY = event.y;
+        }
+
+        let interval;
+        c.addEventListener('mouseover',() => {
+            c.addEventListener('mousemove', mousePos)
+            interval = setInterval(function(){
+                mouseAdd()
+            }, 10);
+        })
+        // c.addEventListener('mousemove', mousePos)
+        // interval = setInterval(function(){
+        //     mouseAdd()
+        // }, 10);
+        c.addEventListener('mouseout',() => {clearInterval(interval)});
 
         function animate(){
             requestAnimationFrame(animate);
@@ -140,7 +183,6 @@
             for(i = 0; i < circleArr.length; i++){
                 circleArr[i].update();
             }
-            
         }
         animate();
 	</script>
