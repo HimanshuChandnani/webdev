@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<input id="inp" type="number" placeholder="Enter your marks">
+        <button onclick="grade.result()">Submit</button>
+	</body>
+	<script>
+		// let obj = {
+        //     name: 'Himanshu',
+        //     age: 20,
+        //     print: function(){
+        //         return document.write('My name is '+this.name+' and I am '+this.age+' years old')
+        //     }
+        // }
+        // obj.print();
+        // let key = Object.keys(obj);
+        // console.log(key)
+        // for(i in obj){
+        //     document.write(`<br> ${i}: ${obj[i]}`)
+        // }
+        let grade = {
+            marks: 90,
+            result: function(){
+                this.marks = document.getElementById('inp').value;
+                if (this.marks >= 90){
+                    console.log('Your grade is A');
+                }
+                else if(this.marks >=70 && this.marks < 90){
+                    console.log('Your grade is B');
+                }
+                else if(this.marks >=50 && this.marks < 70){
+                    console.log('Your grade is C');
+                }
+                else if(this.marks >=33 && this.marks < 50){
+                    console.log('Your grade is D');
+                }
+                else if(this.marks < 33){
+                    console.log('Your grade is F');
+                }
+            }
+        }
+        let a = 1;
+        do{
+            document.write('<br>' + a);
+            a++;
+        }
+        while(a <= 10)
+	</script>
+</html>

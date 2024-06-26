@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+            <div class="row">
+                <div class="col-lg-6 my-5">
+                    <h5>1. Age Calculator Assignment<br>
+                        a simple HTML form to take the user's birth date as input.<br>
+                        Use JavaScript to calculate the age based on the current date.<br>
+                        Display the calculated age on the webpage.
+                    </h5>
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>2. Write a program to calculate the sum of all prime numbers between 1 and 100.</h5>
+                    <p id="q2"></p>
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>3. Build a weather application that allows users to:<br>
+                        a. Enter a city or location to get the current weather conditions.<br>
+                        b. Display temperature, weather description, and other relevant information.<br>
+                        c. Include a visual representation, like icons or background images, to reflect the current weather
+                    </h5>
+                    
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>4. Create an interactive quiz game where users can:<br>
+                        a. Answer a series of multiple-choice questions.<br>
+                        b. Receive immediate feedback on each question.<br>
+                        c. See their final score at the end of the quiz.
+                    </h5>
+                    
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>5. Write a program that generates a multiplication table for numbers 1 through 10.</h5>
+                    <input id="q5-inp" style="width: 50%;" type="number" placeholder="Enter the number for its table">
+                    <button onclick="q5fun()">Enter</button>
+                    <p id="q5"></p>
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>6. Write a program that calculates the factorial of a given number.</h5>
+                    <input id="q6-inp" style="width: 50%;" type="number" placeholder="Enter number for its factorial">
+                    <button onclick="q6fun()">Enter</button>
+                    <p id="q6"></p>
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>7. Write a program to calculate the sum of digits of a given number</h5>
+                    <input id="q7-inp" style="width: 50%;" type="number" placeholder="Enter number sum of its digits">
+                    <button onclick="q7fun()">Enter</button>
+                    <p id="q7"></p>
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>8. Write a program to print all prime numbers between 1 and 50.</h5>
+                    <input id="q8-inp" style="width: 50%;" type="number" placeholder="Enter number sum of its digits">
+                    <button onclick="q8fun()">Enter</button>
+                    <p id="q8"></p>
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>9. Write a program to generate the Fibonacci series up to a given number of terms.</h5>
+                    <input id="q9-inp" style="width: 50%;" type="number" placeholder="Enter number for fibonacci">
+                    <button onclick="q9fun()">Enter</button>
+                    <p id="q9"></p>
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>10. Write a program that takes a string as input and prints its reverse.</h5>
+                    
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>11. Write a program to check if a given string is a palindrome.</h5>
+                    
+                </div>
+                <div class="col-lg-6 my-5">
+                    <h5>12. Write a program to print the following pattern:</h5>
+                </div>
+            </div>
+        </div>
+	</body>
+	<script>
+        //2. prime number sum
+        let prime = false;
+        let primeNumbers = [];
+        for(i = 2; i < 100; i++){
+            for(j = 2; j < i; j++){
+                if(i % j == 0){
+                    prime = false;
+                    break;
+                }
+                else{prime = true}
+            }
+            if(prime){
+                console.log(i);
+                primeNumbers.push(i);
+            }
+        }
+        let q2 = document.getElementById('q2');
+        q2.innerHTML = 0;
+        for(i in primeNumbers){
+            q2.innerHTML = parseInt(q2.innerHTML) + primeNumbers[i];
+        }
+        //5. table
+        function q5fun(){
+            let q5 = document.getElementById('q5');
+            let inp = document.getElementById('q5-inp').value;
+            q5.innerHTML = '';
+            for(i = 0; i < 10; i++){
+                q5.innerHTML += `${inp} x ${i+1} = ${inp * (i + 1)}<br>`;
+            }
+        }
+        //6. factorial
+        function q6fun(){
+            let q6 = document.getElementById('q6');
+            let inp = document.getElementById('q6-inp').value;
+            let fact = 1;
+            for(i = 1; i <= inp; i++){
+                fact *= i;
+            }
+            q6.innerHTML = fact;
+        }
+        //7. add digits
+        function q7fun(){
+            let q7 = document.getElementById('q7');
+            let inp = document.getElementById('q7-inp').value;
+            inp = inp.toString().split('');
+            let sum = 0;
+            for(i = 0; i <= inp.length-1; i++){
+                sum += parseInt(inp[i]);
+            }
+            q7.innerHTML = sum;
+        }
+        //8. print prime numbers
+        function q8fun(){
+            let q8 = document.getElementById('q8');
+            let inp = document.getElementById('q8-inp').value;
+            let prime2 = false;
+            let primeNumbers2 = [];
+            q8.innerHTML = '';
+            for(i = 2; inp >= primeNumbers2.length; i++){
+                for(j = 2; j < i; j++){
+                    if(i % j == 0){
+                        prime2 = false;
+                        break;
+                    }
+                    else{prime2 = true}
+                }
+                if(prime2){
+                    console.log(i);
+                    primeNumbers2.push(i);
+                    q8.innerHTML += i + ' ';
+                }
+            }
+        }
+        //9. febonacci series
+        function q9fun(){
+            let q9 = document.getElementById('q9');
+            let inp = document.getElementById('q9-inp').value;
+            let arr1 = [];
+            let arr2 = [1];
+            q9.innerHTML = arr2;
+            for(i = 0; i < inp; i++){
+                for(j = 0; j < arr2.length; j++){
+                    arr1[j] = arr2[j];
+                }
+                for(j = 0; j <= i+1; j++){
+                    if(j-1 < 0){
+                        arr2[j] = arr1[j];
+                    }
+                    else if(j == i+1){
+                        arr2[j] = arr1[j-1];
+                    }
+                    else{
+                        arr2[j] = arr1[j-1] + arr1[j];
+                    }
+                }
+                q9.innerHTML += '<br>' + arr2;
+            }
+        }
+	</script>
+</html>

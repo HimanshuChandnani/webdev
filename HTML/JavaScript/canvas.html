@@ -12,6 +12,7 @@
             }
 			canvas{
                 border: 1px solid;
+                cursor: none;
             }
 		</style>
 	</head>
@@ -47,7 +48,11 @@
             this.draw = function(){
                 ctx.beginPath();
                 ctx.strokeStyle = color;
-                ctx.fillStyle = color;
+                let grd = ctx.createRadialGradient(this.x,this.y,this.r/10,this.x,this.y,this.r);
+                grd.addColorStop(0,'#ffffff00');
+                grd.addColorStop(1,color);
+                // grd.addColorStop(2,'#ffffff00');
+                ctx.fillStyle = grd;
                 ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
                 // ctx.stroke();
                 ctx.fill();
@@ -85,7 +90,7 @@
             }
         }
 
-        function CircleTemp(x, y, vx, vy, r, rs, color){
+        function CircleTemp(x, y, vx, vy, r, rs, color, maxr){
             this.x = x;
             this.y = y;
             this.vx = vx;
@@ -93,11 +98,15 @@
             this.r = r;
             this.rs = rs;
             this.color = color;
+            this.maxr = maxr;
 
             this.draw = function(){
                 ctx.beginPath();
                 ctx.strokeStyle = color;
-                ctx.fillStyle = color;
+                let grd = ctx.createRadialGradient(this.x,this.y,this.r/10,this.x,this.y,this.r);
+                grd.addColorStop(0,'#ffffff00');
+                grd.addColorStop(1,color);
+                ctx.fillStyle = grd;
                 ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
                 // ctx.stroke();
                 ctx.fill();
@@ -112,7 +121,7 @@
                     this.vy = -this.vy;
                 }
             
-                if(this.r > 10 || this.r <= 0){
+                if(this.r > maxr || this.r <= 0){
                     this.rs = -this.rs;
                 }
                 this.r += this.rs;
@@ -127,7 +136,7 @@
         }
 
         let circleArr = [];
-        for(i = 0; i < 100; i++){
+        for(i = 0; i < 50; i++){
             let r = Math.random() * 50;
             let rs = Math.random() / 10;
             let x = Math.random() * (w - r * 2) + r;
@@ -142,15 +151,16 @@
         let posX;
         let posY;
         function mouseAdd(){
-            let r = Math.random() * 10;
-            let rs = Math.random() + 0.1;
+            let maxr = 5;
+            let r = Math.random() * 1;
+            let rs = Math.random() + 0.2;
             let x = posX;
             let y = posY;
             let vx = (Math.random() - 0.5) * 5;
             let vy = (Math.random() - 0.5) * 5;
             // let color = 'rgba(' + Math.random() * 225 + ',' + Math.random() * 225 + ','+Math.random() * 225 + ','+Math.random() * 100/100 + ')';
             let color = pellate[parseInt(Math.random() * pellate.length)];
-            circleArr.push(new CircleTemp(x, y, vx, vy, r, rs, color));
+            circleArr.push(new CircleTemp(x, y, vx, vy, r, rs, color, maxr));
         }
 
         // c.addEventListener('mousemove', mouseAdd)
@@ -164,7 +174,7 @@
             c.addEventListener('mousemove', mousePos)
             interval = setInterval(function(){
                 mouseAdd()
-            }, 10);
+            }, 1);
         })
         // c.addEventListener('mousemove', mousePos)
         c.addEventListener('mouseout',() => {clearInterval(interval)});
