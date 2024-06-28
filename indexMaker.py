@@ -11,7 +11,7 @@ def generate_index_file():
     current_time = time.time()
 
     # Array of files/folders to ignore
-    ignore_list = ['ignore_this_folder', 'ignore_this_file.txt']
+    ignore_list = ['ignore_this_folder', 'ignore_this_file.txt', '.git', '.github', 'react']
 
     print(f"Current time: {current_time}")
 
