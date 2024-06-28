@@ -35,7 +35,14 @@
                         b. Receive immediate feedback on each question.<br>
                         c. See their final score at the end of the quiz.
                     </h5>
-                    
+                    <b id="question"></b>
+                    <div id="option">
+                        A: <button onclick="q4fun('a')"></button>
+                        B: <button onclick="q4fun('b')"></button>
+                        C: <button onclick="q4fun('c')"></button>
+                        D: <button onclick="q4fun('d')"></button>
+                    </div>
+                    <b id="correct">Correct Answer: </b>
                 </div>
                 <div class="col-lg-6 my-5">
                     <h5>5. Write a program that generates a multiplication table for numbers 1 through 10.</h5>
@@ -103,6 +110,60 @@
         for(i in primeNumbers){
             q2.innerHTML = parseInt(q2.innerHTML) + primeNumbers[i];
         }
+        //4. MCQs
+        let turn = -1;
+        let test;
+        function q4fun(pick){
+            let question = document.getElementById('question');
+            let correct = document.getElementById('correct');
+            let option = document.getElementById('option');
+            let que = [
+                'How are you?',
+                'What is the real name of Rahul Gandhi?',
+                'Who is the top scorer of IPL?',
+                "Asia's number one tv serial"
+            ];
+            let opt = [
+                ['Good','Bad','Amazing','Cool'],
+                ['Pappu','Donkey','Comedian','All of the above'],
+                ['Virat Kohli','Rohit Sharma','Suresh Raina','David Warner'],
+                ['TMKOC', 'Sasural Simarka', 'Baalveer',]
+            ];
+            test = opt;
+            let ans = [
+                'b',
+                'd',
+                'a',
+                'a'
+            ];
+            let a = 0;
+            let b = 1;
+            let c = 2;
+            let d = 3;
+            
+            if(pick){
+                if(pick == ans[turn]){
+                    correct.innerHTML = 'Correct <button onclick="q4fun()">Next</button>';
+                }
+                else{
+                correct.innerHTML = 'No the orrect answer is ' + ans[turn].toUpperCase() + ': ' + opt[turn][eval(ans[turn])] + '<button onclick="q4fun()">Next</button>';
+                }
+            }
+            else{
+                turn++;
+                if(turn < que.length){
+                    question.innerHTML = que[turn];
+                    for(i = 0; i < 4; i++){
+                        option.children[i].innerHTML = opt[turn][i];
+                    }
+                    correct.innerHTML = '';
+                }
+                else{
+                    correct.innerHTML = 'There are no more questions'
+                }
+            }
+        }
+        q4fun();
         //5. table
         function q5fun(){
             let q5 = document.getElementById('q5');
@@ -140,20 +201,23 @@
             let prime2 = false;
             let primeNumbers2 = [];
             q8.innerHTML = '';
-            for(i = 2; inp >= primeNumbers2.length; i++){
-                for(j = 2; j < i; j++){
-                    if(i % j == 0){
-                        prime2 = false;
-                        break;
+            
+                for(i = 2; inp >= primeNumbers2.length; i++){
+            
+                    for(j = 2; j < i; j++){
+                        if(i % j == 0){
+                            prime2 = false;
+                            break;
+                        }
+                        else{prime2 = true}
                     }
-                    else{prime2 = true}
+                    if(prime2){
+                        console.log(i);
+                        primeNumbers2.push(i);
+                        q8.innerHTML += i + ' ';
+                    }
                 }
-                if(prime2){
-                    console.log(i);
-                    primeNumbers2.push(i);
-                    q8.innerHTML += i + ' ';
-                }
-            }
+                inp+=1;
         }
         //9. febonacci series
         function q9fun(){

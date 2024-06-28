@@ -10,6 +10,9 @@ def generate_index_file():
     recent_time_frame = 1 * 24 * 60 * 60  # 1 day
     current_time = time.time()
 
+    # Array of files/folders to ignore
+    ignore_list = ['ignore_this_folder', 'ignore_this_file.txt', '.github', 'react']
+
     print(f"Current time: {current_time}")
 
     def get_git_last_commit_time(path):
@@ -133,9 +136,9 @@ def generate_index_file():
 
         def write_directory(path, base_path, f, indent_level=1):
             items = sorted(os.listdir(path))
-            directories = [item for item in items if os.path.isdir(os.path.join(path, item)) and not item.startswith('.')]
-            files = [item for item in items if os.path.isfile(os.path.join(path, item)) and not item.startswith('.')]
-            
+            directories = [item for item in items if os.path.isdir(os.path.join(path, item)) and item not in ignore_list]
+            files = [item for item in items if os.path.isfile(os.path.join(path, item)) and item not in ignore_list]
+
             for item in directories:
                 item_path = os.path.join(path, item)
                 relative_path = os.path.relpath(item_path, base_path).replace("\\", "/")
