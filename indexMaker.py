@@ -11,7 +11,7 @@ def generate_index_file():
     current_time = time.time()
 
     # Array of files/folders to ignore
-    ignore_list = ['ignore_this_folder', 'ignore_this_file.txt', '.github', 'react']
+    ignore_list = ['ignore_this_folder', 'ignore_this_file.txt']
 
     print(f"Current time: {current_time}")
 
@@ -22,6 +22,9 @@ def generate_index_file():
             return int(timestamp.strip())
         except subprocess.CalledProcessError:
             print(f"Failed to get last commit time for {path}")
+            return 0
+        except ValueError:
+            print(f"Invalid timestamp returned for {path}")
             return 0
 
     def is_recent(path):
