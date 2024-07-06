@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<input id="inp" type="text" placeholder="Password">
+        <div id="error">
+            <p>Must contain atleast 8 characters</p>
+            <p>Must contain atlease 1 uppercase and 1 lowercase character</p>
+            <p>Must contain atleast 1 number</p>
+        </div>
+        <button onclick="submit()">Enter</button>
+        <p id="result"></p>
+	</body>
+	<script>
+		function submit() {
+            let inp = document.getElementById('inp').value;
+            let error = document.getElementById('error');
+            let result = document.getElementById('result');
+            pattern = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.{8,})/g;
+            console.log(inp.match(pattern));
+            if(pattern.test(inp)){
+                result.innerHTML = 'Valid';
+            }
+            else{
+                result.innerHTML = 'Invalid';
+            }
+        }
+	</script>
+</html>

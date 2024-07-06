@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../../bootstrap.4.6.2.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<style>
+            .parent{
+                background-color:aquamarine;
+                padding: 20px;
+            }
+            #error{
+                color: red;
+            }
+		</style>
+	</head>
+	<body>
+        <div class="container">
+            <button id="btn1">hide button</button><br><br>
+            <button id="btn2">Background color</button>
+            <button id="btn3">Text color</button>
+            <button id="btn4">Font size</button>
+            <button id="btn5">Hide</button>
+            <button id="btn6">Show</button>
+            <button id="btn7">Toggle</button>
+            <button id="btnnew">image</button>
+            <h2 id="text" class="p-3">Some text</h2>
+            <button id="btn9">Animate left</button>
+            <button id="btn8">Animate right</button>
+            <button id="btn11">Animate up</button>
+            <button id="btn10">Animate down</button>
+            <div class="position-relative pb-5">
+                <h2 id="text2" class="position-absolute">Some other text</h2>
+            </div>
+
+            <h2>Child</h2>
+            <div id="child">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
+                <p>8</p>
+                <p>9</p>
+                <p>10</p>
+            </div>
+            <h2>nth and eq</h2>
+            <div id="nth">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
+                <p>8</p>
+                <p>9</p>
+                <p>10</p>
+            </div>
+            <h2>Parent</h2>
+            <div>
+                <p id="child_of_parent">1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
+                <p>8</p>
+                <p>9</p>
+                <p>10</p>
+            </div>
+            <h2>Odd Even</h2>
+            <div id="oddeven">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+                <p>4</p>
+                <p>5</p>
+                <p>6</p>
+                <p>7</p>
+                <p>8</p>
+                <p>9</p>
+                <p>10</p>
+            </div>  
+            <h2>Form</h2>
+            <form id="form">
+                <input id="name" type="text" placeholder="name">
+                <input id="email" type="email" placeholder="email">
+                <input type="submit">
+                <p id="error"></p>
+            </form>
+            <button id="slide-btnu">Slide Down</button>
+            <button id="slide-btnd">Slide Up</button>
+            <button id="slide-btnt">Slide Toggle</button>
+            <h2 id="slide">Slide Down</h2>
+
+            <button id="start-animate">Start</button>
+            <button id="stop-animate">Stop</button>
+            <h2 id="to-animate" class="position-relative display-inline-block">Animate Start Stop</h2>
+            <h2>AJAX</h2>
+            <p id="ajax"></p>
+
+            <input id="blur" type="text">
+
+            <h2>Window size</h2>
+            <p id="win-size"></p>
+
+            <h2>Scroll</h2>
+            <p id="scroll"></p>
+        </div>
+
+        
+	</body>
+	<script>
+		$('#btn1').click(()=>{$('#btn1').hide()});
+
+        $('#btn2').click(()=>$('#text').css('background-color', `rgb(${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)})`));
+        $('#btn3').click(()=>$('#text').css('color',`rgb(${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)})`));
+        $('#btn4').click(()=>$('#text').css('font-size', parseInt(Math.random() * 100)))
+        $('#btn5').click(()=>$('#text').fadeOut());
+        $('#btn6').click(()=>$('#text').fadeIn());
+        $('#btn7').click(()=>$('#text').fadeToggle());
+        $('#btnnew').click(()=>$('#text').css('background-image','url("../images/house01.jpg")'));
+
+        $('#btn8').click(()=>$('#text2').animate({left: '+=100px'}));
+        $('#btn9').click(()=>$('#text2').animate({left: '-=100px'}));
+        $('#btn10').click(()=>$('#text2').animate({top: '+=100px'}));
+        $('#btn11').click(()=>$('#text2').animate({top: '-=100px'}));
+
+        $(document).ready(()=>$('#child p').text('1'));
+        $(document).ready(()=>$('#nth p:nth-child(1),#nth p:nth(5)').text('nth'));
+        $(document).ready(()=>$('#nth p:eq(1),#nth p:eq(5)').text('eq'));
+        $(document).ready(()=>$('#child_of_parent').parent().addClass('parent'));
+        $(document).ready(()=>$('#oddeven p:nth-child(odd)').text("odd"));
+        $(document).ready(()=>$('#oddeven p:nth-child(even)').text("even"));
+
+        $('#form').submit((event)=>{
+            let valid = true;
+            if($('#name').val() === ''){
+                valid = false;
+            }
+            else if($('#email').val() === ''){
+                valid = false;
+            }
+            if(!valid){
+                $('#error').text('Invalid');
+                event.preventDefault()
+            }
+        })
+        $('#slide-btnu').click(()=>$('#slide').slideDown())
+        $('#slide-btnd').click(()=>$('#slide').slideUp())
+        $('#slide-btnt').click(()=>$('#slide').slideToggle())
+
+        let stop_animate
+        $('#start-animate').click(()=>{
+            // stop_animate = setInterval(() => {
+                $('#to-animate').animate({left: '+=1000px'},10000);
+            // }, 100);
+        })
+        $('#stop-animate').click(()=>$('#to-animate').stop())
+        $(document).keypress((event)=>console.log(event.key))
+
+        $(document).ready(()=>$('#ajax').load('text.txt'))
+        $('#ajax-btn').click(()=>{
+            $.post('text.txt',$('#ajax-value').val())
+        })
+
+        $(document).ready(()=>$('#blur').focus(()=>console.log('you entered input')))
+        $(document).ready(()=>$('#blur').change(()=>console.log('you changed input')))
+        $(document).ready(()=>$('#blur').blur(()=>console.log('you left input')))
+        $(window).resize(()=>$('#win-size').text(window.innerWidth + ', ' + window.innerHeight))
+        let x = 0
+        $(window).scroll(()=>$('#scroll').text(x++))
+        $(document).scroll(()=>$('#scroll').text(x++))
+	</script>
+</html>

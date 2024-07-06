@@ -106,7 +106,7 @@
                 let grd = ctx.createRadialGradient(this.x,this.y,this.r/10,this.x,this.y,this.r);
                 grd.addColorStop(0,'#ffffff00');
                 grd.addColorStop(1,color);
-                ctx.fillStyle = grd;
+                ctx.fillStyle = color;
                 ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
                 // ctx.stroke();
                 ctx.fill();
@@ -150,10 +150,11 @@
 
         let posX;
         let posY;
+        let maxr = 5;
         function mouseAdd(){
-            let maxr = 5;
+            // let maxr = 5;
             let r = Math.random() * 1;
-            let rs = Math.random() + 0.2;
+            let rs = Math.random() + 5;
             let x = posX;
             let y = posY;
             let vx = (Math.random() - 0.5) * 5;
@@ -162,6 +163,8 @@
             let color = pellate[parseInt(Math.random() * pellate.length)];
             circleArr.push(new CircleTemp(x, y, vx, vy, r, rs, color, maxr));
         }
+
+        c.addEventListener('click', () => setInterval(()=>{if(maxr<100){maxr+=1}},10))
 
         // c.addEventListener('mousemove', mouseAdd)
         function mousePos(){

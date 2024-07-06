@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<h4 class="container">
+            Q. Given a chocolate bar, two children, Lily and Ron, are determining how to share it. Each of the squares has an integer on it. Lily decides to share a contiguous segment of the bar selected such that: <br>
+            •	The length of the segment matches Ron's birth month, and,<br>
+            •	The sum of the integers on the squares is equal to his birth day.<br>
+            You must determine how many ways she can divide the chocolate.<br>
+            Take an array of chocolate bar having integers like [2,2,1,3,2] and take ron’s birth month and birthday through input field<br>
+            If birth month=2 and birthday=4 so take pieces of chocolate only 2 but consecutive and sum of pieces should be 4 and it should give result by 2 ways lily can divide the cholocalte.
+        </h4>
+        <div class="container">
+            <input id="month" type="number" placeholder="Month">
+            <input id="date" type="number" placeholder="Date">
+            <button onclick="check()">Enter</button>
+            <p id="result"></p>
+        </div>
+	</body>
+	<script>
+		function check() {
+            arr = [2,2,1,3,2];
+            m = document.getElementById('month').value;
+            d = document.getElementById('date').value;
+            result = document.getElementById('result');
+            result.innerHTML = '';
+            for(i = 0; i < arr.length - m + 1; i++){
+                let temp = 0;
+                for(j = 0; j < m; j++){
+                    temp += arr[i + j];
+                }
+                if(temp == d){
+                    result.innerHTML += '[';
+                    for(j = 0; j < m; j++){
+                        result.innerHTML += arr[i + j];
+                        if(j<m-1){result.innerHTML += ',';}
+                        console.log(arr[i + j])
+                    }
+                    result.innerHTML += ']';
+                    
+                }
+            }
+        }
+	</script>
+</html>
