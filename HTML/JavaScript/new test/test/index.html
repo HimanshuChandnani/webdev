@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/header-img/logo.png">
+                    </a>
+                    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="collapsibleNavId">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="side">
+                        <a class="new-link" href="#">+1 000-000-0000</a>
+                        <button class="new-link btn btn-dark text-white px-4" href="#">Book Now →</button>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="banner">
+            <div id="carouselId" class="carousel slide overflow-hidden" data-ride="carousel">
+                <ol class="carousel-indicators custom-indicators">
+                    <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselId" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <img src="img/banner_01.jpg" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/banner_02.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-caption dark-banner text-white">
+                        <img src="" alt="">
+                        <p class="heading">Art Manicure</p>
+                        <p>Creative color sstyles. Always in trends. Best quality.</p>
+                        <button class="btn btn-outline-light">Read More →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about-us py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 to-right">
+                        <img src="img/about.png">
+                    </div>
+                    <div class="col-lg-6 mt-lg-0 mt-4 to-left">
+                        <p class="topic">About Us</p>
+                        <p class="heading">We Have the Nail Knowledge</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div class="d-flex">
+                            <div>
+                                <h1 id="year-num">0 +</h1>
+                                <p>Year Experience</p>
+                            </div>
+                            <div class="ml-3">
+                                <h1 id="client-num">0 +</h1>
+                                <p>Happy Client</p>
+                            </div>
+                        </div>
+                        <div class="btn btn-dark">About Us →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="services py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="topic text-center">We Specialize In</p>
+                        <p class="heading text-center">Our Services</p>
+                    </div>
+                    <div class="col-lg-6 to-right">
+                        <div class="box">
+                            <img class="position-absolute" src="img/ser_02.jpg">
+                            <div class="d-flex bg-white position-absolute p-3">
+                                <p class="heading mr-3">Facials</p>
+                                <button class="btn btn-dark">Book Now →</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-lg-0 mt-4 to-left">
+                        <div class="box">
+                            <img class="position-absolute" src="img/ser_01.jpg">
+                            <div class="d-flex bg-white position-absolute p-3">
+                                <p class="heading mr-3">Facials</p>
+                                <button class="btn btn-dark">Book Now →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gallery py-5">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="topic text-center"> Why We Are The Best</p>
+                        <p class="heading text-center">Our Gallery</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 position-relative gal">
+                        <img src="img/gallery_01.jpg">
+                        <div class="img-hover">
+                            <a target="_blank" href="img/gallery_01.jpg">
+                                <button class="btn btn-light">
+                                    <?xml version="1.0" encoding="utf-8"?><svg class="svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 122.879 119.799" enable-background="new 0 0 122.879 119.799" xml:space="preserve"><g><path d="M49.988,0h0.016v0.007C63.803,0.011,76.298,5.608,85.34,14.652c9.027,9.031,14.619,21.515,14.628,35.303h0.007v0.033v0.04 h-0.007c-0.005,5.557-0.917,10.905-2.594,15.892c-0.281,0.837-0.575,1.641-0.877,2.409v0.007c-1.446,3.66-3.315,7.12-5.547,10.307 l29.082,26.139l0.018,0.016l0.157,0.146l0.011,0.011c1.642,1.563,2.536,3.656,2.649,5.78c0.11,2.1-0.543,4.248-1.979,5.971 l-0.011,0.016l-0.175,0.203l-0.035,0.035l-0.146,0.16l-0.016,0.021c-1.565,1.642-3.654,2.534-5.78,2.646 c-2.097,0.111-4.247-0.54-5.971-1.978l-0.015-0.011l-0.204-0.175l-0.029-0.024L78.761,90.865c-0.88,0.62-1.778,1.209-2.687,1.765 c-1.233,0.755-2.51,1.466-3.813,2.115c-6.699,3.342-14.269,5.222-22.272,5.222v0.007h-0.016v-0.007 c-13.799-0.004-26.296-5.601-35.338-14.645C5.605,76.291,0.016,63.805,0.007,50.021H0v-0.033v-0.016h0.007 c0.004-13.799,5.601-26.296,14.645-35.338C23.683,5.608,36.167,0.016,49.955,0.007V0H49.988L49.988,0z M50.004,11.21v0.007h-0.016 h-0.033V11.21c-10.686,0.007-20.372,4.35-27.384,11.359C15.56,29.578,11.213,39.274,11.21,49.973h0.007v0.016v0.033H11.21 c0.007,10.686,4.347,20.367,11.359,27.381c7.009,7.012,16.705,11.359,27.403,11.361v-0.007h0.016h0.033v0.007 c10.686-0.007,20.368-4.348,27.382-11.359c7.011-7.009,11.358-16.702,11.36-27.4h-0.006v-0.016v-0.033h0.006 c-0.006-10.686-4.35-20.372-11.358-27.384C70.396,15.56,60.703,11.213,50.004,11.21L50.004,11.21z"/></g></svg>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-md-0 mt-4 gal">
+                        <img src="img/gallery_02.jpg">
+                        <div class="img-hover">
+                            <a target="_blank" href="img/gallery_02.jpg">
+                                <button class="btn btn-light">
+                                    <?xml version="1.0" encoding="utf-8"?><svg class="svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 122.879 119.799" enable-background="new 0 0 122.879 119.799" xml:space="preserve"><g><path d="M49.988,0h0.016v0.007C63.803,0.011,76.298,5.608,85.34,14.652c9.027,9.031,14.619,21.515,14.628,35.303h0.007v0.033v0.04 h-0.007c-0.005,5.557-0.917,10.905-2.594,15.892c-0.281,0.837-0.575,1.641-0.877,2.409v0.007c-1.446,3.66-3.315,7.12-5.547,10.307 l29.082,26.139l0.018,0.016l0.157,0.146l0.011,0.011c1.642,1.563,2.536,3.656,2.649,5.78c0.11,2.1-0.543,4.248-1.979,5.971 l-0.011,0.016l-0.175,0.203l-0.035,0.035l-0.146,0.16l-0.016,0.021c-1.565,1.642-3.654,2.534-5.78,2.646 c-2.097,0.111-4.247-0.54-5.971-1.978l-0.015-0.011l-0.204-0.175l-0.029-0.024L78.761,90.865c-0.88,0.62-1.778,1.209-2.687,1.765 c-1.233,0.755-2.51,1.466-3.813,2.115c-6.699,3.342-14.269,5.222-22.272,5.222v0.007h-0.016v-0.007 c-13.799-0.004-26.296-5.601-35.338-14.645C5.605,76.291,0.016,63.805,0.007,50.021H0v-0.033v-0.016h0.007 c0.004-13.799,5.601-26.296,14.645-35.338C23.683,5.608,36.167,0.016,49.955,0.007V0H49.988L49.988,0z M50.004,11.21v0.007h-0.016 h-0.033V11.21c-10.686,0.007-20.372,4.35-27.384,11.359C15.56,29.578,11.213,39.274,11.21,49.973h0.007v0.016v0.033H11.21 c0.007,10.686,4.347,20.367,11.359,27.381c7.009,7.012,16.705,11.359,27.403,11.361v-0.007h0.016h0.033v0.007 c10.686-0.007,20.368-4.348,27.382-11.359c7.011-7.009,11.358-16.702,11.36-27.4h-0.006v-0.016v-0.033h0.006 c-0.006-10.686-4.35-20.372-11.358-27.384C70.396,15.56,60.703,11.213,50.004,11.21L50.004,11.21z"/></g></svg>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-lg-0 mt-4 gal">
+                        <img src="img/gallery_03.jpg">
+                        <div class="img-hover">
+                            <a target="_blank" href="img/gallery_03.jpg">
+                                <button class="btn btn-light">
+                                    <?xml version="1.0" encoding="utf-8"?><svg class="svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 122.879 119.799" enable-background="new 0 0 122.879 119.799" xml:space="preserve"><g><path d="M49.988,0h0.016v0.007C63.803,0.011,76.298,5.608,85.34,14.652c9.027,9.031,14.619,21.515,14.628,35.303h0.007v0.033v0.04 h-0.007c-0.005,5.557-0.917,10.905-2.594,15.892c-0.281,0.837-0.575,1.641-0.877,2.409v0.007c-1.446,3.66-3.315,7.12-5.547,10.307 l29.082,26.139l0.018,0.016l0.157,0.146l0.011,0.011c1.642,1.563,2.536,3.656,2.649,5.78c0.11,2.1-0.543,4.248-1.979,5.971 l-0.011,0.016l-0.175,0.203l-0.035,0.035l-0.146,0.16l-0.016,0.021c-1.565,1.642-3.654,2.534-5.78,2.646 c-2.097,0.111-4.247-0.54-5.971-1.978l-0.015-0.011l-0.204-0.175l-0.029-0.024L78.761,90.865c-0.88,0.62-1.778,1.209-2.687,1.765 c-1.233,0.755-2.51,1.466-3.813,2.115c-6.699,3.342-14.269,5.222-22.272,5.222v0.007h-0.016v-0.007 c-13.799-0.004-26.296-5.601-35.338-14.645C5.605,76.291,0.016,63.805,0.007,50.021H0v-0.033v-0.016h0.007 c0.004-13.799,5.601-26.296,14.645-35.338C23.683,5.608,36.167,0.016,49.955,0.007V0H49.988L49.988,0z M50.004,11.21v0.007h-0.016 h-0.033V11.21c-10.686,0.007-20.372,4.35-27.384,11.359C15.56,29.578,11.213,39.274,11.21,49.973h0.007v0.016v0.033H11.21 c0.007,10.686,4.347,20.367,11.359,27.381c7.009,7.012,16.705,11.359,27.403,11.361v-0.007h0.016h0.033v0.007 c10.686-0.007,20.368-4.348,27.382-11.359c7.011-7.009,11.358-16.702,11.36-27.4h-0.006v-0.016v-0.033h0.006 c-0.006-10.686-4.35-20.372-11.358-27.384C70.396,15.56,60.703,11.213,50.004,11.21L50.004,11.21z"/></g></svg>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-lg-0 mt-4 gal">
+                        <img src="img/gallery_04.jpg">
+                        <div class="img-hover">
+                            <a target="_blank" href="img/gallery_04.jpg">
+                                <button class="btn btn-light">
+                                    <?xml version="1.0" encoding="utf-8"?><svg class="svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 122.879 119.799" enable-background="new 0 0 122.879 119.799" xml:space="preserve"><g><path d="M49.988,0h0.016v0.007C63.803,0.011,76.298,5.608,85.34,14.652c9.027,9.031,14.619,21.515,14.628,35.303h0.007v0.033v0.04 h-0.007c-0.005,5.557-0.917,10.905-2.594,15.892c-0.281,0.837-0.575,1.641-0.877,2.409v0.007c-1.446,3.66-3.315,7.12-5.547,10.307 l29.082,26.139l0.018,0.016l0.157,0.146l0.011,0.011c1.642,1.563,2.536,3.656,2.649,5.78c0.11,2.1-0.543,4.248-1.979,5.971 l-0.011,0.016l-0.175,0.203l-0.035,0.035l-0.146,0.16l-0.016,0.021c-1.565,1.642-3.654,2.534-5.78,2.646 c-2.097,0.111-4.247-0.54-5.971-1.978l-0.015-0.011l-0.204-0.175l-0.029-0.024L78.761,90.865c-0.88,0.62-1.778,1.209-2.687,1.765 c-1.233,0.755-2.51,1.466-3.813,2.115c-6.699,3.342-14.269,5.222-22.272,5.222v0.007h-0.016v-0.007 c-13.799-0.004-26.296-5.601-35.338-14.645C5.605,76.291,0.016,63.805,0.007,50.021H0v-0.033v-0.016h0.007 c0.004-13.799,5.601-26.296,14.645-35.338C23.683,5.608,36.167,0.016,49.955,0.007V0H49.988L49.988,0z M50.004,11.21v0.007h-0.016 h-0.033V11.21c-10.686,0.007-20.372,4.35-27.384,11.359C15.56,29.578,11.213,39.274,11.21,49.973h0.007v0.016v0.033H11.21 c0.007,10.686,4.347,20.367,11.359,27.381c7.009,7.012,16.705,11.359,27.403,11.361v-0.007h0.016h0.033v0.007 c10.686-0.007,20.368-4.348,27.382-11.359c7.011-7.009,11.358-16.702,11.36-27.4h-0.006v-0.016v-0.033h0.006 c-0.006-10.686-4.35-20.372-11.358-27.384C70.396,15.56,60.703,11.213,50.004,11.21L50.004,11.21z"/></g></svg>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="btn btn-dark mt-4">View The Gallery →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="prices py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 to-right">
+                        <p class="topic">Treatments & Prices</p>
+                        <p class="heading">It's Time to Get Trimmed</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Bridal Spa</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 12.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Facials</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 15.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Hair Colouring</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 20.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Haircuts</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 12.50</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="col-lg-6 mt-lg-0 mt-4 to-left">
+                        <img src="img/treathmentandprice.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="prices py-5 my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 to-right">
+                        <p class="topic">Treatments & Prices</p>
+                        <p class="heading">It's Time to Get Trimmed</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Bridal Spa</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 12.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Facials</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 15.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Hair Colouring</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 20.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Haircuts</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 12.50</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="col-lg-6 mt-lg-0 mt-4 to-left">
+                        <img src="img/treathmentandprice.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="prices py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 to-right">
+                        <p class="topic">Treatments & Prices</p>
+                        <p class="heading">It's Time to Get Trimmed</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Bridal Spa</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 12.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Facials</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 15.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Hair Colouring</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 20.00</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="part">
+                            <p><nobr class="treatment">Haircuts</nobr></p>
+                            <div class="dot"></div>
+                            <p><nobr class="money">$ 12.50</nobr></p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="col-lg-6 mt-lg-0 mt-4 to-left">
+                        <img src="img/treathmentandprice.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonials py-5 text-center">
+            <p class="topic">Testimonials</p>
+            <p class="heading">What Our Clients Say</p>
+            <div id="testimonial" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="reviews">
+                            <p class="coma">“</p>
+                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            <div class="line"></div>
+                            <img src="img/client.png" alt="">
+                            <p class="name">Patrick Stone</p>
+                            <p class="work">Freelancer</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="reviews">
+                            <p class="coma">“</p>
+                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            <div class="line"></div>
+                            <img src="img/client.png" alt="">
+                            <p class="name">Patrick Stone</p>
+                            <p class="work">Freelancer</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="reviews">
+                            <p class="coma">“</p>
+                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            <div class="line"></div>
+                            <img src="img/client.png" alt="">
+                            <p class="name">Patrick Stone</p>
+                            <p class="work">Freelancer</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#testimonial" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#testimonial" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="insta p-4">
+            <div class="row">
+                <div class="col-12">
+                    <p class="topic text-center">Follow Our Instagram</p>
+                    <p class="heading text-center">@naylish.insta</p>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-2">
+                    <img src="img/insta_01.jpg">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-2 mt-md-0 mt-4">
+                    <img src="img/insta_02.jpg">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-2 mt-md-0 mt-4">
+                    <img src="img/insta_03.jpg">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-2 mt-lg-0 mt-4">
+                    <img src="img/insta_04.jpg">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-2 mt-lg-0 mt-4">
+                    <img src="img/insta_05.jpg">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-2 mt-lg-0 mt-4">
+                    <img src="img/insta_06.jpg">
+                </div>
+            </div>
+        </div>
+        <footer class="py-5">
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <img src="img/footerlogo.png">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
+                        <p class="heading">Our Salon</p>
+                        <p><a href="">About us</a></p>
+                        <p><a href="">Services</a></p>
+                        <p><a href="">Gallery</a></p>
+                        <p><a href="">FAQ</a></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-lg-0 mt-4">
+                        <p class="heading">Contact</p>
+                        <p>7415 67 St NW, AB, Edmonton, T6B 2J3</p>
+                        <p>v@webcube.ca</p>
+                        <p>Phone: <a href="">+1 000-000-0000</a></p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mt-lg-0 mt-4">
+                        <p class="heading">Subscribe</p>
+                        <form>
+                            <input type="email" placeholder="Your Email">
+                            <input type="button" value="Subscribe">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		<script src="script.js"></script>
+	</body>
+</html>

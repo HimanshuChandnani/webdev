@@ -10,7 +10,13 @@
                 padding: 20px;
             }
             #error{
-                color: red;
+                color: rgb(151, 91, 91);
+            }
+            #to-animate{
+                display: inline-block;
+            }
+            .id{
+                background-color: rgba(220, 20, 60, 0.446);
             }
 		</style>
 	</head>
@@ -99,7 +105,7 @@
 
             <button id="start-animate">Start</button>
             <button id="stop-animate">Stop</button>
-            <h2 id="to-animate" class="position-relative display-inline-block">Animate Start Stop</h2>
+            <h2 id="to-animate" class="position-relative ">Animate Start Stop</h2>
             <h2>AJAX</h2>
             <p id="ajax"></p>
 
@@ -111,7 +117,7 @@
             <h2>Scroll</h2>
             <p id="scroll"></p>
         </div>
-
+        <a href="javascript:(function(){window.open('../resize-window.html', 'myWindowName', 'resizable');})();">720pify-ish</a>
         
 	</body>
 	<script>
@@ -125,10 +131,19 @@
         $('#btn7').click(()=>$('#text').fadeToggle());
         $('#btnnew').click(()=>$('#text').css('background-image','url("../images/house01.jpg")'));
 
-        $('#btn8').click(()=>$('#text2').animate({left: '+=100px'}));
-        $('#btn9').click(()=>$('#text2').animate({left: '-=100px'}));
-        $('#btn10').click(()=>$('#text2').animate({top: '+=100px'}));
-        $('#btn11').click(()=>$('#text2').animate({top: '-=100px'}));
+        let left,right,up,down;
+        $('#btn8').click(right = ()=>$('#text2').animate({left: '+=10px'},100));
+        $('#btn9').click(left = ()=>$('#text2').animate({left: '-=10px'},100));
+        $('#btn10').click(down = ()=>$('#text2').animate({top: '+=10px'},100));
+        $('#btn11').click(up = ()=>$('#text2').animate({top: '-=10px'},100));
+
+        $(document).keypress((event)=>{
+            if(event.key == 'w'){up()}
+            else if(event.key == 'a'){left()}
+            else if(event.key == 's'){down()}
+            else if(event.key == 'd'){right()}
+            console.log(event.key)
+        })
 
         $(document).ready(()=>$('#child p').text('1'));
         $(document).ready(()=>$('#nth p:nth-child(1),#nth p:nth(5)').text('nth'));
@@ -154,14 +169,15 @@
         $('#slide-btnd').click(()=>$('#slide').slideUp())
         $('#slide-btnt').click(()=>$('#slide').slideToggle())
 
-        let stop_animate
-        $('#start-animate').click(()=>{
-            // stop_animate = setInterval(() => {
-                $('#to-animate').animate({left: '+=1000px'},10000);
-            // }, 100);
+        $('#start-animate').click(loop = ()=>{
+            $('#to-animate').animate({
+                left: `+=${Math.random()*50 - 25}px`,
+                rotate: `+=${Math.random()*50 - 25}deg`,
+                fontSize: `+=${Math.random()*10 - 5}px`,
+                color: `#fff`
+            },50,'linear',()=>loop());
         })
         $('#stop-animate').click(()=>$('#to-animate').stop())
-        $(document).keypress((event)=>console.log(event.key))
 
         $(document).ready(()=>$('#ajax').load('text.txt'))
         $('#ajax-btn').click(()=>{
@@ -175,5 +191,8 @@
         let x = 0
         $(window).scroll(()=>$('#scroll').text(x++))
         $(document).scroll(()=>$('#scroll').text(x++))
+        console.log($('#blur').width())
+
+        $(document).ready(()=>$('[id]').addClass('id'))
 	</script>
 </html>

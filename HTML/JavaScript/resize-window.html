@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../bootstrap.4.6.2.css">
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		This only works with open()
+	</body>
+	<script>
+        x= 1500
+        y= 500
+        big = true
+		setInterval(() => {
+            if(big){
+                x-=3
+                y-=3
+                if(x<500){
+                    big = false
+                }
+            }
+            else{
+                x+=3
+                y+=3
+                if(x>1500){
+                    big = true
+                }
+            }
+            window.resizeTo(x,y)
+        }, 10);
+	</script>
+</html>
